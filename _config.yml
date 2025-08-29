@@ -32,11 +32,10 @@ github_username:  kevin
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
-# Collections
-collections:
-  drafts:
-    output: false
+# Permalink structure
+permalink: /:year/:month/:day/:title/
 
 # Defaults
 defaults:
@@ -50,6 +49,9 @@ defaults:
 # Pagination
 paginate: 10
 paginate_path: "/page:num/"
+
+# Show excerpts on the homepage
+show_excerpts: true
 
 # Categories
 category_archive:
