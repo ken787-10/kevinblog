@@ -11,6 +11,29 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
       body { font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif; }
+      /* リンクの下線を完全に削除 */
+      a, a:hover, a:focus, a:active {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        outline: none !important;
+      }
+      /* タイトル内のリンク */
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+      /* グループホバー時のタイトル色変更を優先 */
+      .group:hover .group-hover\:text-indigo-600 { color: rgb(79 70 229) !important; }
+      .group:hover .group-hover\:text-orange-600 { color: rgb(234 88 12) !important; }
+      .group:hover .group-hover\:text-blue-600 { color: rgb(37 99 235) !important; }
+      .group:hover .group-hover\:text-red-600 { color: rgb(220 38 38) !important; }
+      .group:hover .group-hover\:text-green-600 { color: rgb(22 163 74) !important; }
+      .group:hover .group-hover\:text-violet-600 { color: rgb(124 58 237) !important; }
+      .group:hover .group-hover\:text-teal-600 { color: rgb(13 148 136) !important; }
+      .group:hover .group-hover\:text-amber-600 { color: rgb(217 119 6) !important; }
+      .group:hover .group-hover\:text-rose-600 { color: rgb(225 29 72) !important; }
+      .group:hover .group-hover\:text-lime-600 { color: rgb(101 163 13) !important; }
+      .group:hover .group-hover\:text-gray-600 { color: rgb(75 85 99) !important; }
     </style>
     {%- feed_meta -%}
     {%- if jekyll.environment == 'production' and site.google_analytics -%}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin's Blog - 個別記事デザインプレビュー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .serif { font-family: 'Noto Serif JP', serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- ヘッダー -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <h1 class="text-2xl font-bold">Kevin's Startup Blog - 記事デザイン</h1>
+                <nav class="flex gap-6">
+                    <a href="#medium" class="text-sm font-medium hover:text-blue-600">Medium風</a>
+                    <a href="#notion" class="text-sm font-medium hover:text-blue-600">Notion風</a>
+                    <a href="#substack" class="text-sm font-medium hover:text-blue-600">Substack風</a>
+                    <a href="#dev" class="text-sm font-medium hover:text-blue-600">Dev.to風</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- デザイン1: Medium風クリーンデザイン -->
+    <section id="medium" class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-gray-700">デザイン1: Medium風クリーンデザイン</h2>
+            
+            <!-- 記事ヘッダー -->
+            <article>
+                <header class="mb-12">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                        AIスタートアップの始め方：2025年完全ガイド
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        ChatGPTやClaudeの登場により、AI開発の敷居が大幅に下がりました。本記事では最新のAI技術を活用したスタートアップの立ち上げ方を解説します。
+                    </p>
+                    <div class="flex items-center gap-4 pb-8 border-b border-gray-200">
+                        <img src="https://via.placeholder.com/48" alt="Author" class="w-12 h-12 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-900">Kevin</p>
+                            <p class="text-sm text-gray-500">2025年8月29日 · 5分で読む</p>
+                        </div>
+                        <div class="ml-auto flex gap-2">
+                            <button class="px-4 py-2 text-sm border border-gray-300 rounded-full hover:bg-gray-50">
+                                👏 120
+                            </button>
+                            <button class="px-4 py-2 text-sm border border-gray-300 rounded-full hover:bg-gray-50">
+                                💬 23
+                            </button>
+                            <button class="px-4 py-2 text-sm border border-gray-300 rounded-full hover:bg-gray-50">
+                                🔖 Save
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 記事本文 -->
+                <div class="prose prose-lg max-w-none">
+                    <img src="https://via.placeholder.com/800x400" alt="Hero" class="w-full rounded-lg mb-8">
+                    
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                        起業家の皆さん、こんにちは。今日のビジネス環境は急速に変化しており、特にAI（人工知能）の活用はスタートアップにとって大きなチャンスとなっています。
+                    </p>
+                    
+                    <h2 class="text-3xl font-bold mt-12 mb-6 text-gray-900">1. AIのビジネスモデルを理解する</h2>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                        AIを活用するためには、まずそのビジネスモデルを理解することが重要です。AIは単なる技術ではなく、ビジネスの課題を解決するためのツールです。
+                    </p>
+                    
+                    <blockquote class="border-l-4 border-green-500 pl-6 my-8 italic text-gray-600">
+                        "AIは魔法ではありません。それは強力なツールであり、正しく使えば驚くべき結果をもたらします。"
+                    </blockquote>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="border-t-2 border-gray-200"></div>
+
+    <!-- デザイン2: Notion風ドキュメントスタイル -->
+    <section id="notion" class="py-12 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-gray-700">デザイン2: Notion風ドキュメントスタイル</h2>
+            
+            <article class="bg-white rounded-lg shadow-sm p-12">
+                <!-- パンくずリスト -->
+                <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8">
+                    <a href="#" class="hover:text-gray-700">ホーム</a>
+                    <span>/</span>
+                    <a href="#" class="hover:text-gray-700">AI</a>
+                    <span>/</span>
+                    <span class="text-gray-900">記事</span>
+                </nav>
+
+                <!-- 記事ヘッダー -->
+                <header class="mb-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-3xl">🤖</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                            AI・機械学習
+                        </span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                        AIスタートアップの始め方：2025年完全ガイド
+                    </h1>
+                    <div class="flex items-center gap-6 text-sm text-gray-500">
+                        <span>✍️ Kevin</span>
+                        <span>📅 2025年8月29日</span>
+                        <span>⏱️ 5分で読む</span>
+                        <span>👁️ 1,234 views</span>
+                    </div>
+                </header>
+
+                <!-- 目次 -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                    <h3 class="font-semibold text-gray-900 mb-3">📑 目次</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-blue-600">1. AIのビジネスモデルを理解する</a></li>
+                        <li><a href="#" class="hover:text-blue-600">2. 市場ニーズの特定</a></li>
+                        <li><a href="#" class="hover:text-blue-600">3. プロトタイプの開発</a></li>
+                        <li><a href="#" class="hover:text-blue-600">4. 資金調達戦略</a></li>
+                    </ul>
+                </div>
+
+                <!-- 記事本文 -->
+                <div class="prose prose-lg max-w-none">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+                        <p class="text-blue-900 font-medium mb-2">💡 Key Insight</p>
+                        <p class="text-blue-800">
+                            ChatGPTやClaudeの登場により、AI開発の敷居が大幅に下がりました。今がチャンスです。
+                        </p>
+                    </div>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        起業家の皆さん、こんにちは。今日のビジネス環境は急速に変化しており、特にAI（人工知能）の活用はスタートアップにとって大きなチャンスとなっています。
+                    </p>
+
+                    <h2 class="text-2xl font-bold mt-8 mb-4 text-gray-900">1. AIのビジネスモデルを理解する</h2>
+                    
+                    <!-- コールアウトボックス -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-6">
+                        <p class="font-semibold text-yellow-900 mb-2">⚠️ 注意点</p>
+                        <p class="text-yellow-800">AIは万能ではありません。適切な問題設定が成功の鍵です。</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="border-t-2 border-gray-200"></div>
+
+    <!-- デザイン3: Substack風ニュースレター -->
+    <section id="substack" class="py-12 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-gray-700">デザイン3: Substack風ニュースレター</h2>
+            
+            <article>
+                <!-- ニュースレターヘッダー -->
+                <div class="text-center mb-12 pb-8 border-b border-gray-200">
+                    <span class="text-orange-600 font-bold text-sm uppercase tracking-wider">Kevin's Newsletter</span>
+                    <h1 class="text-4xl font-bold text-gray-900 mt-4 mb-4 serif">
+                        AIスタートアップの始め方：<br>2025年完全ガイド
+                    </h1>
+                    <p class="text-gray-600 mb-6">起業家のための実践的アドバイス</p>
+                    <div class="flex items-center justify-center gap-4 text-sm text-gray-500">
+                        <span>Kevin</span>
+                        <span>•</span>
+                        <span>Aug 29, 2025</span>
+                        <span>•</span>
+                        <button class="text-orange-600 hover:text-orange-700 font-medium">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 記事本文 -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-gray-700 leading-loose text-lg mb-8 first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:mr-3">
+                        起業家の皆さん、こんにちは。今日のビジネス環境は急速に変化しており、特にAI（人工知能）の活用はスタートアップにとって大きなチャンスとなっています。
+                    </p>
+
+                    <p class="text-gray-700 leading-loose text-lg mb-8">
+                        しかし、AIをどのように活用すれば良いのか、具体的な方法がわからない方も多いのではないでしょうか。
+                    </p>
+
+                    <h2 class="text-2xl font-bold mt-12 mb-6 text-gray-900 serif">
+                        1. AIのビジネスモデルを理解する
+                    </h2>
+
+                    <p class="text-gray-700 leading-loose text-lg mb-8">
+                        AIを活用するためには、まずそのビジネスモデルを理解することが重要です。
+                    </p>
+
+                    <!-- 購読CTA -->
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-8 my-12 text-center">
+                        <p class="text-xl font-semibold text-gray-900 mb-2">
+                            この記事が気に入りましたか？
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            毎週、起業に関する最新情報をお届けします
+                        </p>
+                        <button class="bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700">
+                            無料で購読する
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="border-t-2 border-gray-200"></div>
+
+    <!-- デザイン4: Dev.to風テクニカル -->
+    <section id="dev" class="py-12 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-white">デザイン4: Dev.to風テクニカル</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- サイドバー -->
+                <aside class="lg:col-span-1">
+                    <div class="bg-gray-800 rounded-lg p-6 sticky top-24">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://via.placeholder.com/64" alt="Author" class="w-16 h-16 rounded-full">
+                            <div>
+                                <p class="font-bold text-white">Kevin</p>
+                                <p class="text-sm text-gray-400">@kevin_startup</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 mb-4">
+                            Follow
+                        </button>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between text-gray-400">
+                                <span>投稿数</span>
+                                <span class="text-white">42</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>フォロワー</span>
+                                <span class="text-white">1.2K</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- メインコンテンツ -->
+                <main class="lg:col-span-3">
+                    <article class="bg-gray-800 rounded-lg overflow-hidden">
+                        <!-- ヒーロー画像 -->
+                        <div class="h-64 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
+                            <span class="text-6xl">🚀</span>
+                        </div>
+
+                        <div class="p-8">
+                            <!-- タグ -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">#ai</span>
+                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">#startup</span>
+                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">#chatgpt</span>
+                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">#起業</span>
+                            </div>
+
+                            <!-- タイトル -->
+                            <h1 class="text-4xl font-bold text-white mb-6">
+                                AIスタートアップの始め方：2025年完全ガイド
+                            </h1>
+
+                            <!-- メタ情報 -->
+                            <div class="flex items-center gap-6 text-sm text-gray-400 mb-8 pb-8 border-b border-gray-700">
+                                <span>📅 Aug 29, 2025</span>
+                                <span>⏱️ 5 min read</span>
+                                <span>👁️ 1,234 views</span>
+                            </div>
+
+                            <!-- リアクション -->
+                            <div class="flex items-center gap-4 mb-8">
+                                <button class="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 text-white">
+                                    <span>❤️</span>
+                                    <span>120</span>
+                                </button>
+                                <button class="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 text-white">
+                                    <span>🦄</span>
+                                    <span>23</span>
+                                </button>
+                                <button class="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 text-white">
+                                    <span>🔖</span>
+                                    <span>45</span>
+                                </button>
+                                <button class="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 text-white ml-auto">
+                                    <span>💬</span>
+                                    <span>15 Comments</span>
+                                </button>
+                            </div>
+
+                            <!-- 本文 -->
+                            <div class="prose prose-invert prose-lg max-w-none">
+                                <p class="text-gray-300 leading-relaxed mb-6">
+                                    起業家の皆さん、こんにちは。今日のビジネス環境は急速に変化しており、特にAI（人工知能）の活用はスタートアップにとって大きなチャンスとなっています。
+                                </p>
+
+                                <h2 class="text-2xl font-bold text-white mt-8 mb-4">
+                                    ## 1. AIのビジネスモデルを理解する
+                                </h2>
+
+                                <p class="text-gray-300 leading-relaxed mb-6">
+                                    AIを活用するためには、まずそのビジネスモデルを理解することが重要です。
+                                </p>
+
+                                <!-- コードブロック -->
+                                <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 my-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs text-gray-500 font-mono">python</span>
+                                        <button class="text-xs text-gray-500 hover:text-white">Copy</button>
+                                    </div>
+                                    <pre class="text-sm text-green-400 font-mono"><code>import openai
+
+# AIスタートアップの基本構造
+class AIStartup:
+    def __init__(self, idea, market):
+        self.idea = idea
+        self.market = market
+        
+    def validate(self):
+        return self.market.needs(self.idea)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
