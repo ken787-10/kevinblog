@@ -23,8 +23,8 @@ email: kevin@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   起業、AI、経営戦略、個人事業に関する実践的な情報を発信するビジネスブログ。
   毎日新鮮な記事をAIと共に作成しています。
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/kevinblog" # the subpath of your site, e.g. /blog
+url: "https://ken787-10.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevin
 github_username:  kevin
 youtube_channel_url: "https://www.youtube.com/@0to100vlog"
