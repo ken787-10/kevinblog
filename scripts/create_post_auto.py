@@ -53,6 +53,7 @@ class AutoPostCreator:
         print("• 誰に向けた記事か")
         print("• どのような価値・情報を提供したいか")
         print("• 特に含めたいポイントがあれば")
+        print("・上記質問で書き足りなかったり修正すべき点があれば書いてください")
         
         overview = input(f"\n{Fore.GREEN}概要: ").strip()
         
@@ -61,6 +62,51 @@ class AutoPostCreator:
             sys.exit(1)
         
         return overview
+    
+    def get_additional_info(self, title: str, overview: str, structure: List[str]) -> Dict:
+        """記事の質を高めるための追加情報を収集"""
+        print(f"\n{Fore.YELLOW}🎯 記事の精度を高めるための追加質問")
+        print(f"{Fore.CYAN}予想記事タイトル: {title}")
+        print(f"{Fore.CYAN}予想構成: {' → '.join(structure)}")
+        
+        additional_info = {}
+        
+        # 1. 想定読者の詳細化
+        print(f"\n{Fore.GREEN}1. 読者をより具体的に教えてください:")
+        print("   例: 創業3年以内のスタートアップCEO、副業を検討中のサラリーマンなど")
+        target_reader = input("   > ").strip()
+        if target_reader:
+            additional_info['target_reader'] = target_reader
+        
+        # 2. 具体的なデータや事例の要望
+        print(f"\n{Fore.GREEN}2. 含めたい具体的なデータ・統計・事例はありますか？:")
+        print("   例: 市場規模、成功率、具体的な企業名、個人的な体験談など")
+        data_examples = input("   > ").strip()
+        if data_examples:
+            additional_info['data_examples'] = data_examples
+        
+        # 3. 避けたい内容・注意点
+        print(f"\n{Fore.GREEN}3. 避けたい内容や注意すべき点はありますか？:")
+        print("   例: 特定の業界への偏見、過度な楽観論、リスクの軽視など")
+        avoid_content = input("   > ").strip()
+        if avoid_content:
+            additional_info['avoid_content'] = avoid_content
+        
+        # 4. 記事の独自性・差別化ポイント
+        print(f"\n{Fore.GREEN}4. この記事の独自性や差別化したいポイントは？:")
+        print("   例: テック業界での実体験、最新のAIツール活用、海外事例の紹介など")
+        unique_point = input("   > ").strip()
+        if unique_point:
+            additional_info['unique_point'] = unique_point
+        
+        # 5. 読者に期待する行動
+        print(f"\n{Fore.GREEN}5. 記事を読んだ読者に最終的にどのような行動を取ってほしいですか？:")
+        print("   例: サービスへの問い合わせ、SNSでのシェア、具体的なツールの試用など")
+        desired_action = input("   > ").strip()
+        if desired_action:
+            additional_info['desired_action'] = desired_action
+        
+        return additional_info
     
     def generate_complete_article(self, overview: str) -> Dict:
         """概要から完全な記事を生成"""
@@ -78,9 +124,12 @@ class AutoPostCreator:
         print("  🏷️ カテゴリとタグを生成中...")
         categories, tags = self.generate_categories_and_tags(overview)
         
+        # 追加情報の収集
+        additional_info = self.get_additional_info(title, overview, structure)
+        
         # 本文生成
         print("  ✍️ 本文を生成中...")
-        content = self.generate_full_content(title, overview, structure)
+        content = self.generate_full_content(title, overview, structure, additional_info)
         
         # メタディスクリプション生成
         print("  📋 メタディスクリプションを生成中...")
@@ -103,28 +152,31 @@ class AutoPostCreator:
     def generate_article_structure(self, overview: str) -> List[str]:
         """記事構成を生成"""
         prompt = f"""
-以下の概要から、読者に価値を提供する記事構成を作成してください。
+以下の概要から、テック系起業家の視点で価値を提供する記事構成を作成してください。
 
 概要: {overview}
 
 要件:
-• 起業家・経営者・フリーランス向けの実践的な内容
-• 4-7個のセクションで構成
-• 読者が段階的に理解できる論理的な流れ
-• 具体例や実践方法を含める構成
-• 最後に行動を促すまとめを含める
+• 読者: テック業界の起業家・経営者・CTOレベルの人材
+• 構成: 5-8個のセクションで論理的に構成
+• 内容の質: コピーライティングの編集を通過するレベルの高品質
+• 実践性: すぐに実行できる具体的なアクション項目を含む
+• データ重視: 定量的な情報・統計・市場データを含める構成
+• 差別化: ありきたりでない、独自の視点や最新トレンドを含める
+• 結論: 明確な行動喚起で終わる
 
+テック系起業家が「これは価値がある」と思う構成にしてください。
 構成の各セクション名を1行ずつ出力してください。番号や記号は不要です。
 """
         
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたは経験豊富なビジネスブログの編集者です。読者の行動を促す構成を作るのが得意です。"},
+                {"role": "system", "content": "あなたはテック業界に精通したシニアエディターです。Y Combinator、Andreessen Horowitz等の一流VCブログや、TechCrunch、The Information等のメディアでコンテンツを手がけ、起業家向けの高品質記事を数多く執筆してきました。データドリブンで実践的な構成作りが得意です。"},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=300
+            max_tokens=400
         )
         
         content = response.choices[0].message.content.strip()
@@ -134,17 +186,21 @@ class AutoPostCreator:
     def generate_title(self, overview: str, structure: List[str]) -> str:
         """タイトルを生成"""
         prompt = f"""
-以下の記事概要と構成から、SEOに最適化された魅力的なタイトルを作成してください。
+以下の記事概要と構成から、テック系起業家が思わずクリックしたくなるタイトルを作成してください。
 
 概要: {overview}
 構成: {', '.join(structure)}
 
 要件:
-• 25-35文字
-• クリック率を高める要素（数字、具体的なメリット、感情的訴求）
-• 検索されやすいキーワードを含める
-• 読者が「今すぐ読みたい」と思う表現
-• 「〜の方法」「〜のコツ」「完全ガイド」「成功法則」などの実践的表現
+• 文字数: 28-35文字（SEO最適）
+• ターゲット: テック業界の起業家・CTO・技術責任者
+• クリック率最大化: 具体的な数字、ROI、成長率、効率化などを含める
+• SEO対策: 検索ボリュームの多いキーワードを自然に配置
+• 権威性: 「実証済み」「データで検証」「成功事例」等の表現
+• 緊急性: 「2024年版」「最新」「今すぐ」等のタイムリー要素
+• 差別化: 一般的な記事タイトルと差をつける独自性
+
+例: 「SaaSスタートアップが ARR を3倍にした 5つの成長戦略【2024年実証済み】」
 
 タイトルのみを出力してください。
 """
@@ -152,11 +208,11 @@ class AutoPostCreator:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはSEOとコンバージョン最適化に精通したコピーライターです。"},
+                {"role": "system", "content": "あなたはテック業界専門のコピーライターです。TechCrunch、VentureBeat、Hacker News等で高いエンゲージメントを獲得するタイトル作成に精通しており、テック起業家の心理を深く理解しています。数字とデータで効果を裏付けるタイトル作りが得意です。"},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.8,
-            max_tokens=100
+            max_tokens=150
         )
         
         return response.choices[0].message.content.strip()
@@ -203,9 +259,22 @@ class AutoPostCreator:
         
         return categories, tags
     
-    def generate_full_content(self, title: str, overview: str, structure: List[str]) -> str:
-        """完全な記事本文を生成"""
+    def generate_full_content(self, title: str, overview: str, structure: List[str], additional_info: Dict) -> str:
+        """完全な記事本文を生成（追加情報を活用）"""
         sections = []
+        
+        # 追加情報を文章に組み込む
+        additional_context = ""
+        if additional_info.get('target_reader'):
+            additional_context += f"具体的読者: {additional_info['target_reader']}\n"
+        if additional_info.get('data_examples'):
+            additional_context += f"含めるべきデータ・事例: {additional_info['data_examples']}\n"
+        if additional_info.get('unique_point'):
+            additional_context += f"差別化ポイント: {additional_info['unique_point']}\n"
+        if additional_info.get('avoid_content'):
+            additional_context += f"避けるべき内容: {additional_info['avoid_content']}\n"
+        if additional_info.get('desired_action'):
+            additional_context += f"期待する読者の行動: {additional_info['desired_action']}\n"
         
         # 導入文を生成
         intro_prompt = f"""
@@ -213,12 +282,15 @@ class AutoPostCreator:
 
 記事概要: {overview}
 
-要件:
-• 読者の課題や悩みに共感する内容
-• この記事で得られる価値を明確に示す
-• 150-200文字程度
-• 続きを読みたくなる魅力的な文章
-• 主要キーワードを自然に含める
+{additional_context}
+
+要件（テック系起業家向け高品質記事）:
+• 読者の痛みポイントに深く共感し、解決への期待を高める
+• データや統計を使って問題の深刻さを裏付ける
+• この記事だけが提供する独自価値を明確に示す
+• 180-250文字程度（一般記事より情報密度を高く）
+• テック業界の最新トレンドや専門用語を適切に使用
+• 「コピーライティングの編集を通過するレベル」の品質
 
 導入文のみを出力してください。見出しは不要です。
 """
@@ -226,26 +298,38 @@ class AutoPostCreator:
         intro_response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはエンゲージメントを高める導入文作成の専門家です。"},
+                {"role": "system", "content": "あなたはテック業界のエディトリアルディレクターです。Forbes、Harvard Business Review、McKinsey等の一流メディアで執筆経験があり、データドリブンで説得力のある導入文作りに定評があります。"},
                 {"role": "user", "content": intro_prompt}
             ],
             temperature=0.7,
-            max_tokens=300
+            max_tokens=400
         )
         
         sections.append(intro_response.choices[0].message.content.strip())
         
         # 各セクションの本文を生成
         for i, section_title in enumerate(structure):
-            section_content = self.generate_section_content(title, overview, section_title, i+1, len(structure))
+            section_content = self.generate_section_content(title, overview, section_title, i+1, len(structure), additional_info)
             sections.append(f"## {section_title}\n\n{section_content}")
         
         return "\n\n".join(sections)
     
-    def generate_section_content(self, title: str, overview: str, section_title: str, section_num: int, total_sections: int) -> str:
-        """各セクションの内容を生成"""
+    def generate_section_content(self, title: str, overview: str, section_title: str, section_num: int, total_sections: int, additional_info: Dict = None) -> str:
+        """各セクションの内容を生成（追加情報を活用）"""
         # セクションの役割を判定
         section_role = self.determine_section_role(section_title, section_num, total_sections)
+        
+        # 追加情報を文脈に組み込む
+        additional_context = ""
+        if additional_info:
+            if additional_info.get('data_examples'):
+                additional_context += f"参考にすべきデータ・事例: {additional_info['data_examples']}\n"
+            if additional_info.get('unique_point'):
+                additional_context += f"強調すべき独自性: {additional_info['unique_point']}\n"
+            if additional_info.get('target_reader'):
+                additional_context += f"具体的読者像: {additional_info['target_reader']}\n"
+            if additional_info.get('desired_action') and section_num == total_sections:
+                additional_context += f"促すべき行動: {additional_info['desired_action']}\n"
         
         prompt = f"""
 「{title}」という記事の「{section_title}」セクションを執筆してください。
@@ -254,27 +338,34 @@ class AutoPostCreator:
 セクション位置: {section_num}/{total_sections}
 セクションの役割: {section_role}
 
-要件:
-• 読者: 起業家、経営者、フリーランス
-• 文体: プロフェッショナルで親しみやすい「です・ます調」
-• 長さ: 400-600文字
-• 具体例、データ、実践方法を含める
-• 読者が今すぐ実行できるアクション項目を含める
-• 箇条書きや番号付きリストを適切に使用
-• 専門用語は分かりやすく説明
+{additional_context}
 
-{section_role}としての役割を果たす内容を書いてください。
+要件（テック系起業家向け高品質記事）:
+• 読者: テック業界の起業家、CTO、技術責任者レベル
+• 文体: 権威性があり信頼できる専門的な「です・ます調」
+• 長さ: 500-800文字（情報密度を高く）
+• 必須要素:
+  - 具体的なデータ、統計、調査結果の引用
+  - 実在する企業・サービスの成功事例
+  - 今すぐ実行可能な具体的アクション（3-5項目）
+  - ROI や効果の定量的指標
+  - 最新のテック業界トレンドの言及
+• フォーマット: 適切な箇条書き、番号付きリスト、引用を使用
+• 品質: 「コピーライティングの編集を通過するレベル」
+• 専門性: テック業界の専門用語を適切に使用（必要に応じて簡潔な説明を付加）
+
+{section_role}としての役割を果たしつつ、上記要件を満たす高品質なコンテンツを作成してください。
 見出し（##）は不要です。本文のみを出力してください。
 """
         
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはビジネス分野で実績のあるライターです。読者に実践的な価値を提供する文章を書くのが得意です。"},
+                {"role": "system", "content": "あなたはテック業界で10年以上の経験を持つシニアライターです。Y Combinator、Andreessen Horowitz、Sequoia Capital等のトップティアVCブログや、TechCrunch、The Information等で記事を執筆しており、データドリブンで実践的な記事作成に定評があります。McKinsey、BCG等のコンサルティングファーム出身で、ビジネス戦略とテクノロジーの両方に精通しています。"},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
-            max_tokens=800
+            temperature=0.6,
+            max_tokens=1200
         )
         
         return response.choices[0].message.content.strip()
@@ -635,33 +726,37 @@ class AutoPostCreator:
     def generate_additional_content(self, article_data: Dict) -> str:
         """追加コンテンツを生成（2000文字に満たない場合）"""
         prompt = f"""
-「{article_data['title']}」の記事に追加するコンテンツを作成してください。
+「{article_data['title']}」の記事に追加するテック系起業家向け高品質コンテンツを作成してください。
 
 既存の記事構成: {', '.join(article_data['structure'])}
 
-以下のセクションから1つ選んで、詳細な内容を書いてください:
-• よくある質問（FAQ）
-• 実践チェックリスト
-• 成功事例の紹介
-• 注意すべきポイント
+以下のセクションから最も価値の高いものを1つ選んで、詳細な内容を書いてください:
+• よくある質問（FAQ）- 実際のCEO/CTOからの質問を想定
+• 実装チェックリスト - 段階的に実行できる具体的リスト
+• ベンチマーク・KPI設定 - 成功の測定方法
+• 失敗回避のポイント - 実際の失敗事例から学ぶ注意点
+• ROI計算・効果測定 - 定量的な成果の測り方
 
-要件:
-• 300-500文字程度
-• 既存コンテンツと重複しない内容
-• 読者にとって実践的で有用な情報
+要件（テック系起業家向け高品質）:
+• 長さ: 400-600文字（情報密度を高く）
+• データ重視: 具体的な数字、統計、業界データを含める
+• 実践性: すぐに使える具体的なツールやフレームワークを紹介
+• 権威性: 実在する企業や調査機関の情報を引用
+• 専門性: テック業界の最新トレンドを反映
 • 適切な見出し（##）を含める
+• 「コピーライティングの編集を通過するレベル」の品質
 
-追加コンテンツのみを出力してください。
+既存コンテンツと重複しない、読者にとって即座に実践できる価値ある追加情報を提供してください。
 """
         
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはコンテンツ拡張の専門家です。記事の価値を高める追加情報を提供します。"},
+                {"role": "system", "content": "あなたはテック業界のコンサルタントで、McKinsey & Company、Boston Consulting Group等で戦略策定に携わった経験があります。データドリブンなアプローチで実践的な価値を提供し、スタートアップから大企業まで幅広いクライアントを支援してきました。記事の価値を最大化する追加コンテンツ作成が得意です。"},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
-            max_tokens=600
+            temperature=0.6,
+            max_tokens=800
         )
         
         return response.choices[0].message.content.strip()
