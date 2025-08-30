@@ -42,6 +42,12 @@ layout: default
         {% if page.subtitle %}
         <p class="mt-2 text-gray-600">{{ page.subtitle }}</p>
         {% endif %}
+        {% if page.collection == 'posts' or page.date %}
+        <div class="mt-2 text-sm text-gray-500">
+          {% assign date_format = "%Y.%m.%d" %}
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+        </div>
+        {% endif %}
       </header>
       {% endif %}
 
@@ -68,8 +74,15 @@ layout: default
       <section aria-labelledby="related-heading" class="mt-6">
         <h3 id="related-heading" class="text-lg font-semibold text-gray-900 mb-4">関連記事</h3>
         <ul class="space-y-2">
-          {% assign rel_cat = page.related_category | default: 'YouTube' %}
-          {% assign related_posts = site.posts | where_exp: 'p', 'p.categories contains rel_cat' | slice: 0, 3 %}
+          {% if page.collection == 'posts' %}
+            {% assign rel_cat = page.categories[0] | default: page.related_category | default: 'YouTube' %}
+          {% else %}
+            {% assign rel_cat = page.related_category | default: 'YouTube' %}
+          {% endif %}
+          {% assign related_posts = site.posts 
+              | where_exp: 'p', 'p.url != page.url' 
+              | where_exp: 'p', 'p.categories contains rel_cat' 
+              | slice: 0, 3 %}
           {% if related_posts and related_posts.size > 0 %}
             {% for p in related_posts %}
             <li>
@@ -186,4 +199,3 @@ layout: default
     }).catch((e) => console.warn('Failed to load latest video:', e));
   })();
 </script>
-
