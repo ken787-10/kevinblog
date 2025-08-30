@@ -27,6 +27,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevin
 github_username:  kevin
+youtube_channel_url: "https://www.youtube.com/@0to100vlog"
+youtube_handle: "@0to100vlog"
 
 # Build settings
 theme: minima
@@ -45,6 +47,11 @@ defaults:
     values:
       layout: "post"
       author: "Kevin"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page_2col"
       
 # Pagination
 paginate: 10

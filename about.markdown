@@ -1,5 +1,4 @@
----
-layout: page
+layout: page_2col
 title: About
 permalink: /about/
 ---
