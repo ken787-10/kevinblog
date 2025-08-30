@@ -14,25 +14,116 @@ layout: default
         .btn-youtube:hover { background-color: #b91c1c; color: #ffffff !important; }
         /* Headings decoration for page content */
         .page-2col-content h2 {
-          margin-top: 1.75rem; margin-bottom: 1rem;
-          font-weight: 800; line-height: 1.2; color: #111827;
-          font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
-          position: relative; padding-left: 0.9rem; letter-spacing: -0.01em;
+          margin-top: 2.5rem; margin-bottom: 1.5rem;
+          font-weight: 700; line-height: 1.35; color: #111827;
+          font-size: 1.875rem;
+          position: relative; padding-left: 0.9rem; letter-spacing: -0.025em;
         }
         .page-2col-content h2::before {
-          content: ""; position: absolute; left: 0; top: 0.25em;
-          width: 4px; height: 0.9em; border-radius: 9999px;
+          content: ""; position: absolute; left: 0; top: 0.35em;
+          width: 4px; height: 0.7em; border-radius: 9999px;
           background: linear-gradient(180deg, #6366f1, #a855f7);
         }
         .page-2col-content h3 {
-          margin-top: 1.5rem; margin-bottom: 0.75rem;
-          font-weight: 700; line-height: 1.35; color: #111827;
-          font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.375rem);
-          position: relative; padding-left: 0.75rem;
+          margin-top: 2rem; margin-bottom: 1.25rem;
+          font-weight: 600; line-height: 1.4; color: #1f2937;
+          font-size: 1.5rem;
         }
-        .page-2col-content h3::before {
-          content: ""; position: absolute; left: 0; top: 0.6em;
-          width: 6px; height: 6px; border-radius: 9999px; background: #6366f1;
+        /* Fix paragraph styling */
+        .page-2col-content p {
+          margin-top: 0; margin-bottom: 1.5rem;
+          font-weight: 400 !important; 
+          line-height: 1.8; 
+          color: #1f2937;
+          font-size: 1.0625rem;
+          letter-spacing: 0.01em;
+        }
+        .page-2col-content strong {
+          font-weight: 600;
+          color: #374151;
+        }
+        .page-2col-content ul {
+          margin-top: 1rem; margin-bottom: 1.5rem;
+          padding-left: 1.75rem;
+          list-style-type: disc;
+        }
+        .page-2col-content ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.75;
+          color: #1f2937;
+        }
+        /* タスクリストのスタイル */
+        .page-2col-content ul.task-list {
+          padding-left: 0;
+          list-style: none;
+        }
+        .page-2col-content ul.task-list li {
+          padding-left: 1.75rem;
+          position: relative;
+        }
+        .page-2col-content ul.task-list li input[type="checkbox"] {
+          position: absolute;
+          left: 0;
+          margin-right: 0.5rem;
+        }
+        .page-2col-content ol {
+          margin-top: 1rem; margin-bottom: 1.5rem;
+          padding-left: 1.75rem;
+          list-style-type: decimal;
+        }
+        .page-2col-content ol li {
+          margin-bottom: 0.75rem;
+          line-height: 1.75;
+          color: #1f2937;
+        }
+        .page-2col-content a {
+          color: #4f46e5;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .page-2col-content a:hover {
+          color: #4338ca;
+        }
+        /* 画像のスタイル */
+        .page-2col-content img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 0.5rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+        .page-2col-content figure {
+          margin: 2rem 0;
+          text-align: center;
+        }
+        .page-2col-content figure img {
+          margin: 0 auto;
+        }
+        .page-2col-content figcaption {
+          margin-top: 0.75rem;
+          font-size: 0.875rem;
+          color: #6b7280;
+          font-style: italic;
+        }
+        /* 関連記事セクションのリストスタイル */
+        .page-2col-content section ul {
+          list-style: none !important;
+          list-style-type: none !important;
+          padding-left: 0 !important;
+          margin-left: 0 !important;
+        }
+        .page-2col-content section ul li {
+          list-style: none !important;
+          list-style-type: none !important;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+        }
+        .page-2col-content section ul li::before {
+          display: none !important;
+          content: none !important;
+        }
+        .page-2col-content section ul li::marker {
+          display: none !important;
         }
       </style>
 
@@ -79,7 +170,7 @@ layout: default
           <!-- Related posts (within main content width, Design A style) -->
           <section aria-labelledby="related-heading" class="mt-2 mb-6">
             <h3 id="related-heading" class="text-lg font-semibold text-gray-900 mb-4">関連記事</h3>
-            <ul class="space-y-2">
+            <ul class="space-y-2 list-none">
               {% if page.collection == 'posts' %}
                 {% assign rel_cat = page.categories[0] | default: page.related_category | default: 'YouTube' %}
               {% else %}

@@ -7,32 +7,55 @@
   overflow: visible !important;
 }
 
+// 段落のスタイル
+.post-content p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+// strongタグのスタイル
+.post-content strong {
+  font-weight: 600;
+  color: #374151;
+}
+
 // 記事の見出しスタイル
 .post-content h2 {
   margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+  margin-bottom: 1.25rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1f2937;
+  letter-spacing: -0.02em;
 }
 
 .post-content h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #555;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #374151;
 }
 
 // リストのスタイル改善
 .post-content ul,
 .post-content ol {
+  margin-top: 0.75rem;
   margin-left: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .post-content li {
   margin-bottom: 0.5rem;
+  line-height: 1.75;
+  color: #4b5563;
+  font-weight: 400;
 }
 
 // 記事画像のスタイル

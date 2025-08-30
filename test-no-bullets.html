@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リストマーカー削除テスト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 関連記事リストのマーカーを完全に削除 */
+        .related-posts-list {
+            list-style: none !important;
+            list-style-type: none !important;
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+        
+        .related-posts-list li {
+            list-style: none !important;
+            list-style-type: none !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        .related-posts-list li::before {
+            display: none !important;
+            content: none !important;
+        }
+        
+        .related-posts-list li::marker {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">リストマーカー削除テスト</h1>
+        
+        <!-- 関連記事セクション -->
+        <section class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">関連記事</h3>
+            <ul class="related-posts-list space-y-2">
+                <li>
+                    <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition rounded-lg px-2">
+                        <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl flex-shrink-0">A</div>
+                        <div class="min-w-0">
+                            <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">AI活用のスタートアップ成功法則：実践ガイド</h4>
+                            <div class="text-xs text-gray-400 mt-1">2025.08.30</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition rounded-lg px-2">
+                        <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl flex-shrink-0">Y</div>
+                        <div class="min-w-0">
+                            <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">YouTubeチャンネル成長戦略：登録者10万人への道</h4>
+                            <div class="text-xs text-gray-400 mt-1">2025.08.30</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition rounded-lg px-2">
+                        <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl flex-shrink-0">W</div>
+                        <div class="min-w-0">
+                            <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">Welcome to Jekyll!</h4>
+                            <div class="text-xs text-gray-400 mt-1">2025.08.29</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- 通常のリスト（比較用） -->
+        <section class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">通常のリスト（比較用）</h3>
+            <ul class="space-y-2">
+                <li>通常のリストアイテム1</li>
+                <li>通常のリストアイテム2</li>
+                <li>通常のリストアイテム3</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
+</content>
+</invoke>

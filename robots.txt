@@ -1,0 +1,21 @@
+---
+layout: null
+---
+# Robots.txt for {{ site.url }}
+# Generated automatically by Jekyll
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /private/
+
+# 画像クローラー向け設定
+User-agent: Googlebot-Image
+Allow: /assets/img/
+
+# サイトマップの場所を指定
+Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml
+
+# クロール速度の制御（1秒間隔）
+Crawl-delay: 1

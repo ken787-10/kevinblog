@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# 記事作成ツールを実行
+cd "$(dirname "$0")"
+python3 scripts/create_post_interactive.py

@@ -1,0 +1,66 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- ホームページ（最重要） -->
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 記事ページ（高優先度） -->
+  {% for post in site.posts %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
+      <lastmod>{% if post.last_modified_at %}{{ post.last_modified_at | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
+      <changefreq>{% if post.date > site.time | date: '%s' | minus: 2592000 %}weekly{% else %}monthly{% endif %}</changefreq>
+      <priority>{% if post.featured %}0.9{% elsif post.date > site.time | date: '%s' | minus: 604800 %}0.8{% else %}0.7{% endif %}</priority>
+      {% if post.image %}
+      <image:image>
+        <image:loc>{{ site.url }}{{ site.baseurl }}{{ post.image }}</image:loc>
+        <image:title>{{ post.title | xml_escape }}</image:title>
+        {% if post.image_alt %}
+        <image:caption>{{ post.image_alt | xml_escape }}</image:caption>
+        {% endif %}
+      </image:image>
+      {% endif %}
+    </url>
+  {% endfor %}
+
+  <!-- 固定ページ -->
+  {% for page in site.pages %}
+    {% unless page.sitemap == false or page.url contains '.xml' or page.url contains '.txt' %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
+      <lastmod>{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</lastmod>
+      <changefreq>{% if page.url == '/about/' %}monthly{% else %}yearly{% endif %}</changefreq>
+      <priority>{% if page.url == '/about/' %}0.6{% else %}0.5{% endif %}</priority>
+    </url>
+    {% endunless %}
+  {% endfor %}
+
+  <!-- カテゴリページ（動的生成） -->
+  {% for category in site.categories %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}/category/{{ category[0] | downcase | replace: ' ', '-' }}/</loc>
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  {% endfor %}
+
+  <!-- タグページ（動的生成） -->
+  {% for tag in site.tags %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}/tag/{{ tag[0] | downcase | replace: ' ', '-' }}/</loc>
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+  {% endfor %}
+</urlset>
