@@ -1,47 +1,197 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~ 
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ mdate | date: date_format }}
+<article class="h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <style>
+      .post-content h2 {
+        margin-top: 1.75rem; margin-bottom: 1rem;
+        font-weight: 800; line-height: 1.2; color: #111827;
+        font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+        position: relative; padding-left: 0.9rem; letter-spacing: -0.01em;
+      }
+      .post-content h2::before {
+        content: ""; position: absolute; left: 0; top: 0.25em;
+        width: 4px; height: 0.9em; border-radius: 9999px;
+        background: linear-gradient(180deg, #6366f1, #a855f7);
+      }
+      .post-content h3 {
+        margin-top: 1.5rem; margin-bottom: 0.75rem;
+        font-weight: 700; line-height: 1.35; color: #111827;
+        font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.375rem);
+        position: relative; padding-left: 0.75rem;
+      }
+      .post-content h3::before {
+        content: ""; position: absolute; left: 0; top: 0.6em;
+        width: 6px; height: 6px; border-radius: 9999px; background: #6366f1;
+      }
+    </style>
+
+    <!-- Category color mapping (match home) -->
+    {%- assign category = page.categories[0] | default: "general" -%}
+    {%- assign category_lower = category | downcase -%}
+    {%- case category_lower -%}
+      {%- when "ai" or "機械学習" or "ml" or "chatgpt" -%}
+        {%- assign gradient_from = "from-indigo-500" -%}
+        {%- assign gradient_to = "to-purple-600" -%}
+        {%- assign text_color = "text-indigo-600" -%}
+        {%- assign category_label = "AI・機械学習" -%}
+      {%- when "起業" or "startup" or "ビジネス" or "business" -%}
+        {%- assign gradient_from = "from-orange-500" -%}
+        {%- assign gradient_to = "to-red-600" -%}
+        {%- assign text_color = "text-orange-600" -%}
+        {%- assign category_label = "起業戦略" -%}
+      {%- when "資金調達" or "funding" or "投資" or "investment" -%}
+        {%- assign gradient_from = "from-blue-500" -%}
+        {%- assign gradient_to = "to-cyan-600" -%}
+        {%- assign text_color = "text-blue-600" -%}
+        {%- assign category_label = "資金調達" -%}
+      {%- when "youtube" or "動画" or "video" -%}
+        {%- assign gradient_from = "from-red-500" -%}
+        {%- assign gradient_to = "to-pink-600" -%}
+        {%- assign text_color = "text-red-600" -%}
+        {%- assign category_label = "YouTube" -%}
+      {%- when "マーケティング" or "marketing" or "seo" -%}
+        {%- assign gradient_from = "from-green-500" -%}
+        {%- assign gradient_to = "to-emerald-600" -%}
+        {%- assign text_color = "text-green-600" -%}
+        {%- assign category_label = "マーケティング" -%}
+      {%- when "テクノロジー" or "tech" or "technology" -%}
+        {%- assign gradient_from = "from-violet-500" -%}
+        {%- assign gradient_to = "to-fuchsia-600" -%}
+        {%- assign text_color = "text-violet-600" -%}
+        {%- assign category_label = "テクノロジー" -%}
+      {%- when "個人事業" or "freelance" or "フリーランス" -%}
+        {%- assign gradient_from = "from-teal-500" -%}
+        {%- assign gradient_to = "to-cyan-600" -%}
+        {%- assign text_color = "text-teal-600" -%}
+        {%- assign category_label = "個人事業" -%}
+      {%- when "リーダーシップ" or "leadership" or "経営" -%}
+        {%- assign gradient_from = "from-amber-500" -%}
+        {%- assign gradient_to = "to-yellow-600" -%}
+        {%- assign text_color = "text-amber-600" -%}
+        {%- assign category_label = "リーダーシップ" -%}
+      {%- when "プロダクト" or "product" or "製品開発" -%}
+        {%- assign gradient_from = "from-rose-500" -%}
+        {%- assign gradient_to = "to-pink-600" -%}
+        {%- assign text_color = "text-rose-600" -%}
+        {%- assign category_label = "プロダクト" -%}
+      {%- when "成長戦略" or "growth" -%}
+        {%- assign gradient_from = "from-lime-500" -%}
+        {%- assign gradient_to = "to-green-600" -%}
+        {%- assign text_color = "text-lime-600" -%}
+        {%- assign category_label = "成長戦略" -%}
+      {%- else -%}
+        {%- assign gradient_from = "from-gray-500" -%}
+        {%- assign gradient_to = "to-gray-600" -%}
+        {%- assign text_color = "text-gray-600" -%}
+        {%- assign category_label = category | capitalize -%}
+    {%- endcase -%}
+
+    <!-- Header -->
+    <header class="mb-6">
+      <span class="inline-flex text-xs font-bold {{ text_color }} uppercase tracking-wider mb-2">{{ category_label }}</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+      <div class="mt-2 text-sm text-gray-500">
+        {%- assign date_format = "%Y.%m.%d" -%}
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: date_format }}
         </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}</p>
-  </header>
+        {%- if page.modified_date -%}
+          <span>（更新: </span>
+          {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+          <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+            {{ mdate | date: date_format }}
+          </time>
+          <span>）</span>
+        {%- endif -%}
+      </div>
+    </header>
 
-  {%- if page.image -%}
-  <div class="post-image-container">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="post-featured-image" />
-    {%- if page.image_credit -%}
-    <div class="image-credit">{{ page.image_credit }}</div>
+    {%- if page.image -%}
+      <div class="rounded-xl overflow-hidden border-2 border-gray-200 mb-6">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="w-full h-auto object-cover" />
+      </div>
     {%- endif -%}
+
+    <!-- Content -->
+    <div class="post-content e-content text-gray-800 leading-relaxed" itemprop="articleBody">
+      {{ content }}
+    </div>
+
+    {%- if page.show_inline_cta != false -%}
+    <!-- Inline CTA (match pages) -->
+    <div class="rounded-xl border-2 border-gray-200 p-5 my-8 bg-gradient-to-r from-indigo-50 to-white">
+      <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
+        <div class="flex-1">
+          <p class="text-sm font-semibold text-gray-900">YouTubeで続きを視聴</p>
+          <p class="text-sm text-gray-600">実演・事例は動画で詳しく解説しています。</p>
+        </div>
+        <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold text-white" style="background-color:#dc2626">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/></svg>
+          チャンネル登録
+        </a>
+      </div>
+    </div>
+    {%- endif -%}
+
+    {%- if page.show_related != false -%}
+    <!-- Related posts by category -->
+    <section aria-labelledby="related-heading" class="mt-6">
+      <h2 id="related-heading" class="text-xl font-bold text-gray-900 mb-4">関連記事</h2>
+      <ul class="space-y-2">
+        {%- assign rel_cat = page.categories[0] | default: category -%}
+        {%- assign related_posts = site.posts | where_exp: 'p', 'p.categories contains rel_cat' | where_exp: 'p', 'p.url != page.url' | slice: 0, 3 -%}
+        {%- if related_posts and related_posts.size > 0 -%}
+          {%- for p in related_posts -%}
+          <li>
+            <a href="{{ p.url | relative_url }}" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+              {%- if p.image -%}
+                <img src="{{ p.image | relative_url }}" alt="{{ p.image_alt | default: p.title }}" class="w-16 h-16 object-cover rounded-md border border-gray-200">
+              {%- else -%}
+                <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl">{{ p.title | slice: 0, 1 }}</div>
+              {%- endif -%}
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">{{ p.title }}</h3>
+                <div class="text-xs text-gray-400 mt-1">{{ p.date | date: "%Y.%m.%d" }}</div>
+              </div>
+            </a>
+          </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- assign latest_posts = site.posts | where_exp: 'p', 'p.url != page.url' | slice: 0, 3 -%}
+          {%- for p in latest_posts -%}
+          <li>
+            <a href="{{ p.url | relative_url }}" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+              <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl">{{ p.title | slice: 0, 1 }}</div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">{{ p.title }}</h3>
+                <div class="text-xs text-gray-400 mt-1">{{ p.date | date: "%Y.%m.%d" }}</div>
+              </div>
+            </a>
+          </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </section>
+    {%- endif -%}
+
+    <!-- Prev/Next -->
+    <nav class="mt-10 flex items-center justify-between text-sm text-gray-600">
+      <div>
+        {%- if page.previous -%}
+          <a class="hover:text-indigo-600" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if page.next -%}
+          <a class="hover:text-indigo-600" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+        {%- endif -%}
+      </div>
+    </nav>
+
+    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
   </div>
-  {%- endif -%}
-
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
