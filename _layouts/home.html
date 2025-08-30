@@ -104,7 +104,7 @@ layout: default
           {%- assign category_label = category | capitalize -%}
       {%- endcase -%}
       
-      <article class="group bg-white border-2 border-gray-200 {{ hover_border }} rounded-lg overflow-hidden transition-all duration-300">
+      <article class="group bg-white border border-gray-100 shadow-sm hover:shadow-md {{ hover_border }} rounded-xl overflow-hidden transition-all duration-300">
         <a href="{{ post.url | relative_url }}" class="block">
           <!-- サムネイル with グラデーションオーバーレイ -->
           <div class="h-48 bg-gradient-to-br {{ gradient_from }} {{ gradient_to }} relative">
