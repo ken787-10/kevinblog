@@ -1,0 +1,168 @@
+---
+layout: default
+---
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  
+  <!-- ヒーローセクション -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      起業家のための実践的知識
+    </h1>
+    <p class="text-xl text-gray-600">
+      AI、スタートアップ、資金調達の最新情報をお届け
+    </p>
+  </div>
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <!-- 記事グリッド -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {%- for post in site.posts -%}
+      
+      <!-- カテゴリ別の配色を設定 -->
+      {%- assign category = post.categories[0] | default: "general" -%}
+      {%- assign category_lower = category | downcase -%}
+      {%- case category_lower -%}
+        {%- when "ai" or "機械学習" or "ml" or "chatgpt" -%}
+          {%- assign gradient_from = "from-indigo-500" -%}
+          {%- assign gradient_to = "to-purple-600" -%}
+          {%- assign text_color = "text-indigo-600" -%}
+          {%- assign hover_border = "hover:border-indigo-500" -%}
+          {%- assign hover_text = "hover:text-indigo-600" -%}
+          {%- assign category_label = "AI・機械学習" -%}
+        {%- when "起業" or "startup" or "ビジネス" or "business" -%}
+          {%- assign gradient_from = "from-orange-500" -%}
+          {%- assign gradient_to = "to-red-600" -%}
+          {%- assign text_color = "text-orange-600" -%}
+          {%- assign hover_border = "hover:border-orange-500" -%}
+          {%- assign hover_text = "hover:text-orange-600" -%}
+          {%- assign category_label = "起業戦略" -%}
+        {%- when "資金調達" or "funding" or "投資" or "investment" -%}
+          {%- assign gradient_from = "from-blue-500" -%}
+          {%- assign gradient_to = "to-cyan-600" -%}
+          {%- assign text_color = "text-blue-600" -%}
+          {%- assign hover_border = "hover:border-blue-500" -%}
+          {%- assign hover_text = "hover:text-blue-600" -%}
+          {%- assign category_label = "資金調達" -%}
+        {%- when "youtube" or "動画" or "video" -%}
+          {%- assign gradient_from = "from-red-500" -%}
+          {%- assign gradient_to = "to-pink-600" -%}
+          {%- assign text_color = "text-red-600" -%}
+          {%- assign hover_border = "hover:border-red-500" -%}
+          {%- assign hover_text = "hover:text-red-600" -%}
+          {%- assign category_label = "YouTube" -%}
+        {%- when "マーケティング" or "marketing" or "seo" -%}
+          {%- assign gradient_from = "from-green-500" -%}
+          {%- assign gradient_to = "to-emerald-600" -%}
+          {%- assign text_color = "text-green-600" -%}
+          {%- assign hover_border = "hover:border-green-500" -%}
+          {%- assign hover_text = "hover:text-green-600" -%}
+          {%- assign category_label = "マーケティング" -%}
+        {%- when "テクノロジー" or "tech" or "technology" -%}
+          {%- assign gradient_from = "from-violet-500" -%}
+          {%- assign gradient_to = "to-fuchsia-600" -%}
+          {%- assign text_color = "text-violet-600" -%}
+          {%- assign hover_border = "hover:border-violet-500" -%}
+          {%- assign hover_text = "hover:text-violet-600" -%}
+          {%- assign category_label = "テクノロジー" -%}
+        {%- when "個人事業" or "freelance" or "フリーランス" -%}
+          {%- assign gradient_from = "from-teal-500" -%}
+          {%- assign gradient_to = "to-cyan-600" -%}
+          {%- assign text_color = "text-teal-600" -%}
+          {%- assign hover_border = "hover:border-teal-500" -%}
+          {%- assign hover_text = "hover:text-teal-600" -%}
+          {%- assign category_label = "個人事業" -%}
+        {%- when "リーダーシップ" or "leadership" or "経営" -%}
+          {%- assign gradient_from = "from-amber-500" -%}
+          {%- assign gradient_to = "to-yellow-600" -%}
+          {%- assign text_color = "text-amber-600" -%}
+          {%- assign hover_border = "hover:border-amber-500" -%}
+          {%- assign hover_text = "hover:text-amber-600" -%}
+          {%- assign category_label = "リーダーシップ" -%}
+        {%- when "プロダクト" or "product" or "製品開発" -%}
+          {%- assign gradient_from = "from-rose-500" -%}
+          {%- assign gradient_to = "to-pink-600" -%}
+          {%- assign text_color = "text-rose-600" -%}
+          {%- assign hover_border = "hover:border-rose-500" -%}
+          {%- assign hover_text = "hover:text-rose-600" -%}
+          {%- assign category_label = "プロダクト" -%}
+        {%- when "成長戦略" or "growth" -%}
+          {%- assign gradient_from = "from-lime-500" -%}
+          {%- assign gradient_to = "to-green-600" -%}
+          {%- assign text_color = "text-lime-600" -%}
+          {%- assign hover_border = "hover:border-lime-500" -%}
+          {%- assign hover_text = "hover:text-lime-600" -%}
+          {%- assign category_label = "成長戦略" -%}
+        {%- else -%}
+          {%- assign gradient_from = "from-gray-500" -%}
+          {%- assign gradient_to = "to-gray-600" -%}
+          {%- assign text_color = "text-gray-600" -%}
+          {%- assign hover_border = "hover:border-gray-500" -%}
+          {%- assign hover_text = "hover:text-gray-600" -%}
+          {%- assign category_label = category | capitalize -%}
+      {%- endcase -%}
+      
+      <article class="group bg-white border border-gray-100 shadow-sm hover:shadow-md {{ hover_border }} rounded-xl overflow-hidden transition-all duration-300">
+        <a href="{{ post.url | relative_url }}" class="block">
+          <!-- サムネイル with グラデーションオーバーレイ -->
+          <div class="h-48 bg-gradient-to-br {{ gradient_from }} {{ gradient_to }} relative">
+            {%- if post.image -%}
+            <img src="{{ post.image | relative_url }}" 
+                 alt="{{ post.image_alt | default: post.title }}" 
+                 class="w-full h-full object-cover mix-blend-multiply opacity-90" />
+            {%- else -%}
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-white text-6xl opacity-50">{{ post.title | slice: 0 }}</span>
+            </div>
+            {%- endif -%}
+          </div>
+          
+          <!-- コンテンツ -->
+          <div class="p-6">
+            <span class="text-xs font-bold {{ text_color }} uppercase tracking-wider">
+              {{ category_label }}
+            </span>
+            <h2 class="mt-2 text-2xl font-bold text-gray-900 {{ hover_text }} transition-colors">
+              {{ post.title | escape }}
+            </h2>
+            <p class="mt-2 text-gray-600 font-light leading-relaxed">
+              {%- if site.show_excerpts -%}
+                {{ post.excerpt | strip_html | truncatewords: 15 }}
+              {%- else -%}
+                {{ post.content | strip_html | truncatewords: 15 }}
+              {%- endif -%}
+            </p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-sm text-gray-500">
+                {%- assign date_format = "%Y.%m.%d" -%}
+                {{ post.date | date: date_format }}
+              </span>
+              <span class="text-sm font-mono {{ text_color }} group-hover:translate-x-1 transition-transform">
+                → 続きを読む
+              </span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if site.paginate -%}
+      {%- assign posts_total = site.posts | size -%}
+      {%- if posts_total > site.paginate -%}
+        <div class="text-center mt-12">
+          <p class="text-gray-600">
+            更新情報を受け取る → 
+            <a href="{{ "/feed.xml" | relative_url }}" class="text-indigo-600 hover:text-indigo-700 font-medium">
+              RSS フィード
+            </a>
+          </p>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+  {%- endif -%}
+
+</div>

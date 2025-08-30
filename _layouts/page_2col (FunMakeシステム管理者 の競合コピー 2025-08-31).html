@@ -1,0 +1,301 @@
+---
+layout: default
+---
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <!-- White background container matching Design A -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+    <div class="px-6 sm:px-10 py-10">
+
+      <style>
+        .video-wrap { position: relative; width: 100%; padding-top: 56.25%; }
+        .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .btn-youtube { background-color: #dc2626; color: #ffffff !important; }
+        .btn-youtube:hover { background-color: #b91c1c; color: #ffffff !important; }
+        /* Headings decoration for page content */
+        .page-2col-content h2 {
+          margin-top: 2.5rem; margin-bottom: 1.5rem;
+          font-weight: 700; line-height: 1.35; color: #111827;
+          font-size: 1.875rem;
+          position: relative; padding-left: 0.9rem; letter-spacing: -0.025em;
+        }
+        .page-2col-content h2::before {
+          content: ""; position: absolute; left: 0; top: 0.35em;
+          width: 4px; height: 0.7em; border-radius: 9999px;
+          background: linear-gradient(180deg, #6366f1, #a855f7);
+        }
+        .page-2col-content h3 {
+          margin-top: 2rem; margin-bottom: 1.25rem;
+          font-weight: 600; line-height: 1.4; color: #1f2937;
+          font-size: 1.5rem;
+        }
+        /* Fix paragraph styling */
+        .page-2col-content p {
+          margin-top: 0; margin-bottom: 1.5rem;
+          font-weight: 400 !important; 
+          line-height: 1.8; 
+          color: #1f2937;
+          font-size: 1.0625rem;
+          letter-spacing: 0.01em;
+        }
+        .page-2col-content strong {
+          font-weight: 600;
+          color: #374151;
+        }
+        .page-2col-content ul {
+          margin-top: 1rem; margin-bottom: 1.5rem;
+          padding-left: 1.75rem;
+          list-style-type: disc;
+        }
+        .page-2col-content ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.75;
+          color: #1f2937;
+        }
+        /* タスクリストのスタイル */
+        .page-2col-content ul.task-list {
+          padding-left: 0;
+          list-style: none;
+        }
+        .page-2col-content ul.task-list li {
+          padding-left: 1.75rem;
+          position: relative;
+        }
+        .page-2col-content ul.task-list li input[type="checkbox"] {
+          position: absolute;
+          left: 0;
+          margin-right: 0.5rem;
+        }
+        .page-2col-content ol {
+          margin-top: 1rem; margin-bottom: 1.5rem;
+          padding-left: 1.75rem;
+          list-style-type: decimal;
+        }
+        .page-2col-content ol li {
+          margin-bottom: 0.75rem;
+          line-height: 1.75;
+          color: #1f2937;
+        }
+        .page-2col-content a {
+          color: #4f46e5;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .page-2col-content a:hover {
+          color: #4338ca;
+        }
+        /* 画像のスタイル */
+        .page-2col-content img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 0.5rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+        .page-2col-content figure {
+          margin: 2rem 0;
+          text-align: center;
+        }
+        .page-2col-content figure img {
+          margin: 0 auto;
+        }
+        .page-2col-content figcaption {
+          margin-top: 0.75rem;
+          font-size: 0.875rem;
+          color: #6b7280;
+          font-style: italic;
+        }
+        /* 関連記事セクションのリストスタイル */
+        .page-2col-content section ul {
+          list-style: none !important;
+          list-style-type: none !important;
+          padding-left: 0 !important;
+          margin-left: 0 !important;
+        }
+        .page-2col-content section ul li {
+          list-style: none !important;
+          list-style-type: none !important;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+        }
+        .page-2col-content section ul li::before {
+          display: none !important;
+          content: none !important;
+        }
+        .page-2col-content section ul li::marker {
+          display: none !important;
+        }
+      </style>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Main content -->
+        <article class="lg:col-span-8 page-2col-content">
+          {% if page.title %}
+          <header class="mb-8 pb-6 border-b border-gray-200">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="mt-2 text-gray-600">{{ page.subtitle }}</p>
+            {% endif %}
+            {% if page.collection == 'posts' or page.date %}
+            <div class="mt-2 text-sm text-gray-500">
+              {% assign date_format = "%Y.%m.%d" %}
+              <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+            </div>
+            {% endif %}
+          </header>
+          {% endif %}
+
+          <!-- Main content with potentially embedded inline CTA -->
+          <div class="post-content">
+            {{ content }}
+          </div>
+
+          {% if page.show_inline_cta != false %}
+          <!-- Inline CTA: YouTube で続きを視聴 -->
+          <div class="rounded-xl border-2 border-gray-200 p-5 mb-6 bg-gradient-to-r from-indigo-50 to-white">
+            <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-gray-900">YouTubeで続きを視聴</p>
+                <p class="text-sm text-gray-600">実演・事例は動画で詳しく解説しています。</p>
+              </div>
+              <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" class="btn-youtube inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/></svg>
+                チャンネル登録
+              </a>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if page.show_related != false %}
+          <!-- Related posts (within main content width, Design A style) -->
+          <section aria-labelledby="related-heading" class="mt-2 mb-6">
+            <h3 id="related-heading" class="text-lg font-semibold text-gray-900 mb-4">関連記事</h3>
+            <ul class="space-y-2 list-none">
+              {% if page.collection == 'posts' %}
+                {% assign rel_cat = page.categories[0] | default: page.related_category | default: 'YouTube' %}
+              {% else %}
+                {% assign rel_cat = page.related_category | default: 'YouTube' %}
+              {% endif %}
+              {% assign related_posts = site.posts 
+                  | where_exp: 'p', 'p.url != page.url' 
+                  | where_exp: 'p', 'p.categories contains rel_cat' 
+                  | slice: 0, 3 %}
+              {% if related_posts and related_posts.size > 0 %}
+                {% for p in related_posts %}
+                <li>
+                  <a href="{{ p.url | relative_url }}" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+                    {% if p.image %}
+                      <img src="{{ p.image | relative_url }}" alt="{{ p.image_alt | default: p.title }}" class="w-16 h-16 object-cover rounded-md border border-gray-200">
+                    {% else %}
+                      <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl">{{ p.title | slice: 0, 1 }}</div>
+                    {% endif %}
+                    <div class="min-w-0">
+                      <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">{{ p.title }}</h4>
+                      <div class="text-xs text-gray-400 mt-1">{{ p.date | date: "%Y.%m.%d" }}</div>
+                    </div>
+                  </a>
+                </li>
+                {% endfor %}
+              {% else %}
+                {% assign latest_posts = site.posts | slice: 0, 3 %}
+                {% for p in latest_posts %}
+                <li>
+                  <a href="{{ p.url | relative_url }}" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+                    <div class="w-16 h-16 rounded-md bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-xl">{{ p.title | slice: 0, 1 }}</div>
+                    <div class="min-w-0">
+                      <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">{{ p.title }}</h4>
+                      <div class="text-xs text-gray-400 mt-1">{{ p.date | date: "%Y.%m.%d" }}</div>
+                    </div>
+                  </a>
+                </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </section>
+          {% endif %}
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="sticky top-20 space-y-6">
+
+            <!-- Profile card (topmost position) -->
+            <div class="border-2 border-gray-200 rounded-xl p-5 bg-white">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-600 text-white font-bold">{{ page.profile_initial | default: 'K' }}</span>
+                <div>
+                  <p class="font-semibold text-gray-900">{{ page.profile_name | default: 'Kevin' }}</p>
+                  <p class="text-sm text-gray-500">{{ page.profile_title | default: 'テック起業家 / AI活用' }}</p>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600">{{ page.profile_bio | default: 'AI × 起業の実践知を毎日配信。現場に効くフレームワークを共有しています。' }}</p>
+            </div>
+
+            <!-- YouTube follow + latest + schedule -->
+            <div class="border-2 border-gray-200 rounded-xl p-5 bg-white">
+              <p class="text-sm font-semibold text-gray-900 mb-2">YouTubeをフォロー</p>
+              <p class="text-gray-600 text-sm mb-3">最新の起業戦略とAI活用ノウハウを動画で解説。</p>
+              <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" class="btn-youtube w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/></svg>
+                チャンネル登録する
+              </a>
+
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs font-semibold text-gray-900 mb-2">最新の動画</p>
+                <div id="latest-youtube-content">
+                  <p class="text-sm text-gray-600">APIキー未設定のため、チャンネルへのリンクを表示しています。</p>
+                  <a class="mt-3 inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium" href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' }}" target="_blank" rel="noopener">{{ site.youtube_handle | default: '@0to100vlog' }} を開く →</a>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs font-semibold text-gray-900 mb-2">配信スケジュール</p>
+                <div class="flex items-center gap-3 text-sm text-gray-700">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-indigo-600 text-white font-bold">7</span>
+                  <div>
+                    <p class="font-semibold">月・水・金 / 朝 7:00</p>
+                    <p class="text-gray-500">定期配信で最新戦略をお届けします</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Latest YouTube video embed (optional: set window.YT_API_KEY in browser) -->
+<script>
+  (function(){
+    const HANDLE = (window.YT_HANDLE || '{{ site.youtube_handle | default: "@0to100vlog" }}');
+    const API_KEY = window.YT_API_KEY || '';
+    if (!API_KEY) return;
+    const contentEl = document.getElementById('latest-youtube-content');
+    if (!contentEl) return;
+    async function fetchLatestVideoId() {
+      const chUrl = `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${encodeURIComponent(HANDLE)}&key=${API_KEY}`;
+      const chRes = await fetch(chUrl);
+      if (!chRes.ok) throw new Error('channels API failed');
+      const chJson = await chRes.json();
+      const uploads = chJson?.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+      if (!uploads) throw new Error('uploads playlist not found');
+      const plUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=${uploads}&key=${API_KEY}`;
+      const plRes = await fetch(plUrl);
+      if (!plRes.ok) throw new Error('playlistItems API failed');
+      const plJson = await plRes.json();
+      return plJson?.items?.[0]?.snippet?.resourceId?.videoId;
+    }
+    fetchLatestVideoId().then((vid) => {
+      if (!vid) return;
+      contentEl.innerHTML = `
+        <div class="video-wrap rounded-lg overflow-hidden">
+          <iframe src="https://www.youtube-nocookie.com/embed/${vid}" title="最新のYouTube動画" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      `;
+    }).catch((e) => console.warn('Failed to load latest video:', e));
+  })();
+</script>

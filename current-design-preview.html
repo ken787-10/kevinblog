@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>現在の記事ページデザイン確認</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Noto Sans JP', sans-serif; }
+    .video-wrap { position: relative; width: 100%; padding-top: 56.25%; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .btn-youtube { background-color: #dc2626; color: #ffffff !important; }
+    .btn-youtube:hover { background-color: #b91c1c; color: #ffffff !important; }
+    /* Headings decoration for page content */
+    .page-2col-content h2 {
+      margin-top: 1.75rem; margin-bottom: 1rem;
+      font-weight: 800; line-height: 1.2; color: #111827;
+      font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+      position: relative; padding-left: 0.9rem; letter-spacing: -0.01em;
+    }
+    .page-2col-content h2::before {
+      content: ""; position: absolute; left: 0; top: 0.25em;
+      width: 4px; height: 0.9em; border-radius: 9999px;
+      background: linear-gradient(180deg, #6366f1, #a855f7);
+    }
+    .page-2col-content h3 {
+      margin-top: 1.5rem; margin-bottom: 0.75rem;
+      font-weight: 700; line-height: 1.35; color: #111827;
+      font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.375rem);
+      position: relative; padding-left: 0.75rem;
+    }
+    .page-2col-content h3::before {
+      content: ""; position: absolute; left: 0; top: 0.6em;
+      width: 6px; height: 6px; border-radius: 9999px; background: #6366f1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- ヘッダー（default.html を簡略化） -->
+  <header class="bg-white border-b-2 border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <span class="text-2xl font-bold text-gray-900">Kevin's Business Blog</span>
+        <nav class="hidden md:flex gap-6">
+          <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600">Home</a>
+          <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600">Articles</a>
+          <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Main content -->
+        <article class="lg:col-span-8 page-2col-content">
+          <header class="mb-8 pb-6 border-b border-gray-200">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">AI活用のスタートアップ成功法則：実践ガイド</h1>
+            <p class="mt-2 text-gray-600">テック起業家のための固定ページ（右サイドバー＋Sticky CTA）</p>
+            <div class="mt-2 text-sm text-gray-500">
+              <time datetime="2025-08-30">2025.08.30</time>
+            </div>
+          </header>
+
+          <!-- Main content with potentially embedded inline CTA -->
+          <div class="post-content">
+            <div class="video-wrap rounded-lg overflow-hidden mb-6">
+              <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            
+            <h2>セクション1：戦略の全体像</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">この固定ページは、テック系起業家のために設計された「解説＋行動喚起」パターンです。読了率を損なわずに、YouTube と X への導線を自然に配置します。</p>
+            
+            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-5 mb-6">
+              <p class="text-indigo-900 font-semibold mb-1">ポイント</p>
+              <p class="text-indigo-800 text-sm">・本文幅は可読性重視（~70字目安）・見出しは太め・YouTubeは16:9でレスポンシブ。</p>
+            </div>
+            
+            <h3>セクション2：実装の方針</h3>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-8">
+              <li>トップのナビ・フォント・背景色（gray-50）を継承</li>
+              <li>YouTubeは youtube-nocookie.com を使用、loading="lazy" 対応</li>
+              <li>サイドバーのCTAは sticky top-20 で可視性を担保</li>
+            </ul>
+
+            <p class="text-gray-700 leading-relaxed mb-6">AI技術の急速な発展により、スタートアップの成功パターンも大きく変化しています。本記事では、実際の事例を交えながら、AI活用による起業の成功法則を解説します。</p>
+
+            <h2>セクション3：具体的な活用方法</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">プロダクト開発からマーケティング、カスタマーサポートまで、AIを活用できる領域は多岐にわたります。重要なのは、自社のビジネスモデルに最適な活用方法を見つけることです。</p>
+          </div>
+
+          <!-- Inline CTA: YouTube で続きを視聴 -->
+          <div class="rounded-xl border-2 border-gray-200 p-5 mb-6 bg-gradient-to-r from-indigo-50 to-white">
+            <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-gray-900">YouTubeで続きを視聴</p>
+                <p class="text-sm text-gray-600">実演・事例は動画で詳しく解説しています。</p>
+              </div>
+              <a href="https://www.youtube.com/@0to100vlog?sub_confirmation=1" class="btn-youtube inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/></svg>
+                チャンネル登録
+              </a>
+            </div>
+          </div>
+
+          <!-- Related posts (within main content width, Design A style) -->
+          <section aria-labelledby="related-heading" class="mt-2 mb-6">
+            <h3 id="related-heading" class="text-lg font-semibold text-gray-900 mb-4">関連記事</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=300&auto=format&fit=crop" alt="YouTube成長戦略" class="w-16 h-16 object-cover rounded-md border border-gray-200">
+                  <div class="min-w-0">
+                    <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">YouTubeチャンネル成長戦略：登録者10万人への道</h4>
+                    <div class="text-xs text-gray-400 mt-1">2025.08.29</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=300&auto=format&fit=crop" alt="AI活用ガイド" class="w-16 h-16 object-cover rounded-md border border-gray-200">
+                  <div class="min-w-0">
+                    <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">成功する経営戦略の裏にあるリーダーシップの秘訣</h4>
+                    <div class="text-xs text-gray-400 mt-1">2025.08.28</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="group flex items-center gap-3 py-3 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=300&auto=format&fit=crop" alt="資金調達のポイント" class="w-16 h-16 object-cover rounded-md border border-gray-200">
+                  <div class="min-w-0">
+                    <h4 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 truncate">成功する起業家の資金調達法：実践的ステップガイド</h4>
+                    <div class="text-xs text-gray-400 mt-1">2025.08.27</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="sticky top-20 space-y-6">
+
+            <!-- Profile card (topmost position) -->
+            <div class="border-2 border-gray-200 rounded-xl p-5 bg-white">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-600 text-white font-bold">K</span>
+                <div>
+                  <p class="font-semibold text-gray-900">Kevin</p>
+                  <p class="text-sm text-gray-500">テック起業家 / AI活用</p>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600">AI × 起業の実践知を毎日配信。現場に効くフレームワークを共有しています。</p>
+            </div>
+
+            <!-- YouTube follow + latest + schedule -->
+            <div class="border-2 border-gray-200 rounded-xl p-5 bg-white">
+              <p class="text-sm font-semibold text-gray-900 mb-2">YouTubeをフォロー</p>
+              <p class="text-gray-600 text-sm mb-3">最新の起業戦略とAI活用ノウハウを動画で解説。</p>
+              <a href="https://www.youtube.com/@0to100vlog?sub_confirmation=1" class="btn-youtube w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/></svg>
+                チャンネル登録する
+              </a>
+
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs font-semibold text-gray-900 mb-2">最新の動画</p>
+                <div id="latest-youtube-content">
+                  <p class="text-sm text-gray-600">APIキー未設定のため、チャンネルへのリンクを表示しています。</p>
+                  <a class="mt-3 inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium" href="https://www.youtube.com/@0to100vlog" target="_blank" rel="noopener">@0to100vlog を開く →</a>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs font-semibold text-gray-900 mb-2">配信スケジュール</p>
+                <div class="flex items-center gap-3 text-sm text-gray-700">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-indigo-600 text-white font-bold">7</span>
+                  <div>
+                    <p class="font-semibold">月・水・金 / 朝 7:00</p>
+                    <p class="text-gray-500">定期配信で最新戦略をお届けします</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="bg-white border-t-2 border-gray-100 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <p class="text-center text-sm text-gray-600">© 2025 Kevin's Business Blog. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

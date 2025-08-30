@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>サイト動作確認</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .status-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .success { color: #22c55e; }
+    .error { color: #ef4444; }
+    .warning { color: #f59e0b; }
+    h1 { color: #1f2937; }
+    h2 { color: #4b5563; margin-top: 30px; }
+    a { color: #3b82f6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .link-list { 
+      list-style: none; 
+      padding: 0;
+    }
+    .link-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .link-list li:last-child {
+      border-bottom: none;
+    }
+    .url-display {
+      background: #f3f4f6;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="status-card">
+    <h1>🚀 Kevin's Business Blog - サイト動作確認</h1>
+    
+    <h2>デプロイ状況</h2>
+    <p class="success">✅ GitHubへのプッシュ完了</p>
+    <p class="warning">⏳ GitHub Pagesのビルド中（通常2-5分かかります）</p>
+    
+    <h2>サイトURL</h2>
+    <div class="url-display">
+      <a href="https://ken787-10.github.io/kevinblog/" target="_blank">
+        https://ken787-10.github.io/kevinblog/
+      </a>
+    </div>
+    
+    <h2>ページリンク</h2>
+    <ul class="link-list">
+      <li>
+        <strong>トップページ:</strong><br>
+        <a href="https://ken787-10.github.io/kevinblog/" target="_blank">
+          https://ken787-10.github.io/kevinblog/
+        </a>
+      </li>
+      <li>
+        <strong>AI記事:</strong><br>
+        <a href="https://ken787-10.github.io/kevinblog/2025/08/30/ai-startup-success-guide/" target="_blank">
+          https://ken787-10.github.io/kevinblog/2025/08/30/ai-startup-success-guide/
+        </a>
+      </li>
+      <li>
+        <strong>YouTube記事:</strong><br>
+        <a href="https://ken787-10.github.io/kevinblog/2025/08/30/youtube-growth-strategy/" target="_blank">
+          https://ken787-10.github.io/kevinblog/2025/08/30/youtube-growth-strategy/
+        </a>
+      </li>
+      <li>
+        <strong>資金調達記事:</strong><br>
+        <a href="https://ken787-10.github.io/kevinblog/2025/08/29/funding-strategy/" target="_blank">
+          https://ken787-10.github.io/kevinblog/2025/08/29/funding-strategy/
+        </a>
+      </li>
+    </ul>
+    
+    <h2>エラーについて</h2>
+    <p><strong class="warning">Google翻訳のCSPエラー:</strong> ブラウザの翻訳機能による警告で、サイトには影響しません。</p>
+    <p><strong class="success">✅ favicon.ico:</strong> 空のファイルを作成済み（404エラーは解消されます）</p>
+    
+    <h2>確認事項</h2>
+    <ul>
+      <li>✅ デザイン案Aに準拠した白背景コンテナ</li>
+      <li>✅ トップページの記事カード表示</li>
+      <li>✅ 記事ページの2カラムレイアウト</li>
+      <li>✅ YouTube CTA とサイドバー</li>
+      <li>✅ 関連記事セクション</li>
+    </ul>
+    
+    <h2>次のステップ</h2>
+    <p>GitHub Pagesのビルドが完了するまで数分お待ちください。その後、上記のリンクからサイトにアクセスできます。</p>
+  </div>
+</body>
+</html>
