@@ -3,6 +3,10 @@
   "outputDirectory": "_site",
   "installCommand": "gem install bundler",
   "framework": null,
+  "env": {
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "en_US.UTF-8"
+  },
   "headers": [
     {
       "source": "/(.*)",

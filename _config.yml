@@ -93,3 +93,8 @@ exclude:
   - .github/
   - README.md
   - requirements.txt
+  - "*.mp4"
+  - _prompt/
+  
+# Encoding
+encoding: utf-8
