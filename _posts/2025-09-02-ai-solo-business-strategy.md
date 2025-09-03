@@ -1,13 +1,11 @@
 ---
-title: "1. 「AIを使って一人で年商1億円を目指す起業法」"
-categories: []
-tags: ["起業、CHAT GPT", "Claude", "LLM"]
+title: "AIを使って一人で年商1億円を目指す起業法"
+date: 2025-09-02 10:00:00 +0900
+categories: 起業
+tags: ["ChatGPT", "Claude", "LLM", "AI起業"]
 author: "Kevin"
-date: "2025-09-02"
-description: "おねがいします"
-image: "/assets/img/posts/1-aiを使って一人で年商1億円を目指す起業法-thumb.jpg"
-image_alt: "起業"
-image_credit: Photo by <a href="https://unsplash.com/@lwdzl?utm_source=unsplash&utm_medium=referral">Jack Dong</a> on <a href="https://unsplash.com?utm_source=unsplash&utm_medium=referral">Unsplash</a>
+excerpt: "AIの力を借りて、固定費ゼロで年商1億円を目指す実践的な起業戦略を解説します。"
+image: https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2000&auto=format&fit=crop
 ---
 
 ## 導入（読者の課題・悩みに共感）
