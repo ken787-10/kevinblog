@@ -137,25 +137,104 @@
     border-bottom-color: #030303;
   }
   
-  /* レスポンシブ調整 */
+  /* レスポンシブ調整 - モバイルYouTubeスタイル */
   @media (max-width: 768px) {
+    .youtube-container {
+      padding: 0;
+    }
+    
+    .channel-banner {
+      height: 120px;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+    
+    .channel-section {
+      padding: 16px;
+      background: #ffffff;
+    }
+    
     .channel-info {
-      flex-direction: column;
+      gap: 12px;
       align-items: flex-start;
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
     
     .channel-avatar {
       width: 80px;
       height: 80px;
+      margin-top: -40px;
+      border: 3px solid #ffffff;
+    }
+    
+    .channel-details {
+      flex: 1;
+      padding-bottom: 0;
     }
     
     .channel-name {
-      font-size: 24px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .channel-stats {
+      font-size: 14px;
+      color: #606060;
+      margin-bottom: 4px;
+    }
+    
+    .channel-links {
+      font-size: 14px;
     }
     
     .channel-actions {
+      width: 100%;
       margin-left: 0;
       margin-top: 16px;
+      padding-bottom: 0;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .subscribe-btn {
+      flex: 1;
+      padding: 8px 16px;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    .view-stats-btn {
+      background: #f0f0f0;
+      color: #065fd4;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    
+    .channel-tabs {
+      padding: 0;
+      gap: 0;
+      border-bottom: 1px solid #e5e5e5;
+      justify-content: space-around;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 100;
+    }
+    
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      padding: 14px 0;
+      font-size: 14px;
+      font-weight: 600;
     }
   }
 </style>
