@@ -195,7 +195,7 @@ layout: default-no-header
         {%- assign featured_post = site.posts.first -%}
       {%- endif -%}
       
-      {%- if site.data.youtube_settings.layout.show_featured != false -%}
+      {%- if featured_post and site.data.youtube_settings.featured_post.enabled != false -%}
       <!-- おすすめ動画 -->
       <div style="margin-bottom: 48px;">
         <h2 class="section-title">おすすめの投稿</h2>
