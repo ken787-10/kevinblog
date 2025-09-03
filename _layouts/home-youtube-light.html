@@ -1,0 +1,228 @@
+---
+layout: default
+---
+
+<style>
+  /* YouTube風のカスタムスタイル（ライトテーマ） */
+  .video-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #f0f0f0;
+    border-radius: 12px;
+  }
+  
+  .video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .channel-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  /* タイトルのスタイル */
+  .video-title {
+    color: #0f0f0f;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  
+  .video-meta {
+    color: #606060;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* ホバーエフェクト */
+  .video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .video-card:hover .video-title {
+    color: #4f46e5;
+  }
+  
+  /* カテゴリバッジ */
+  .category-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+</style>
+
+<div class="bg-white">
+  <!-- ヒーローセクション -->
+  <div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          起業家のための実践的知識
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          AI、スタートアップ、資金調達の最新情報を動画とブログでお届け。<br>
+          実際の経験に基づいた、すぐに使えるノウハウを共有します。
+        </p>
+        <div class="flex gap-4 justify-center">
+          <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" 
+             class="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition shadow-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5L15.8 12l-6.1 3.5z"/>
+            </svg>
+            YouTubeチャンネル登録
+          </a>
+          <a href="/about" class="inline-flex items-center gap-2 bg-white text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition border border-gray-200 shadow">
+            詳しく見る
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- セクションヘッダー -->
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">最新の記事</h2>
+      <p class="text-gray-600">起業とAI活用の実践的な情報をお届けします</p>
+    </div>
+
+    {{ content }}
+
+    {%- if site.posts.size > 0 -%}
+      <!-- 動画グリッド -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {%- for post in site.posts -%}
+        
+        <!-- カテゴリ別の配色を設定 -->
+        {%- assign category = post.categories[0] | default: "general" -%}
+        {%- assign category_lower = category | downcase -%}
+        {%- case category_lower -%}
+          {%- when "ai" or "機械学習" or "ml" or "chatgpt" -%}
+            {%- assign badge_bg = "bg-indigo-100" -%}
+            {%- assign badge_text = "text-indigo-700" -%}
+            {%- assign category_label = "AI・機械学習" -%}
+          {%- when "起業" or "startup" or "ビジネス" or "business" -%}
+            {%- assign badge_bg = "bg-orange-100" -%}
+            {%- assign badge_text = "text-orange-700" -%}
+            {%- assign category_label = "起業戦略" -%}
+          {%- when "資金調達" or "funding" or "投資" or "investment" -%}
+            {%- assign badge_bg = "bg-blue-100" -%}
+            {%- assign badge_text = "text-blue-700" -%}
+            {%- assign category_label = "資金調達" -%}
+          {%- when "youtube" or "動画" or "video" -%}
+            {%- assign badge_bg = "bg-red-100" -%}
+            {%- assign badge_text = "text-red-700" -%}
+            {%- assign category_label = "YouTube" -%}
+          {%- when "マーケティング" or "marketing" or "seo" -%}
+            {%- assign badge_bg = "bg-green-100" -%}
+            {%- assign badge_text = "text-green-700" -%}
+            {%- assign category_label = "マーケティング" -%}
+          {%- else -%}
+            {%- assign badge_bg = "bg-gray-100" -%}
+            {%- assign badge_text = "text-gray-700" -%}
+            {%- assign category_label = category | capitalize -%}
+        {%- endcase -%}
+        
+        <article class="video-card group cursor-pointer">
+          <a href="{{ post.url | relative_url }}" class="block">
+            <!-- サムネイル -->
+            <div class="video-thumbnail mb-3 overflow-hidden">
+              {%- if post.image -%}
+              <img src="{{ post.image | relative_url }}" 
+                   alt="{{ post.image_alt | default: post.title }}" 
+                   loading="lazy"
+                   class="transition-transform duration-300" />
+              {%- else -%}
+              <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <span class="text-gray-400 text-5xl font-bold">{{ post.title | slice: 0 }}</span>
+              </div>
+              {%- endif -%}
+              <!-- 動画の長さ -->
+              {%- if post.duration -%}
+              <span class="video-duration">{{ post.duration }}</span>
+              {%- endif -%}
+            </div>
+            
+            <!-- 動画情報 -->
+            <div class="flex gap-3">
+              <!-- チャンネルアバター -->
+              <div class="channel-avatar">
+                K
+              </div>
+              
+              <!-- タイトルとメタ情報 -->
+              <div class="flex-1 min-w-0">
+                <!-- カテゴリバッジ -->
+                <span class="category-badge {{ badge_bg }} {{ badge_text }}">
+                  {{ category_label }}
+                </span>
+                
+                <h3 class="video-title">
+                  {{ post.title | escape }}
+                </h3>
+                
+                <div class="video-meta">
+                  <div class="text-sm">{{ site.title | escape }}</div>
+                  <div class="text-sm">
+                    {%- assign date_format = "%Y年%m月%d日" -%}
+                    {{ post.date | date: date_format }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+        {%- endfor -%}
+      </div>
+
+      <!-- もっと見る -->
+      <div class="text-center mt-12">
+        <a href="/archive" class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium">
+          すべての記事を見る
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+    {%- endif -%}
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+# YouTubeスタイルホームページの設定ファイル
+# このファイルでチャンネル情報とおすすめ動画の設定を管理します
+
+# チャンネル情報
+channel:
+  # サブタイトル（説明文）
+  subtitle: "起業、AI、経営戦略、個人事業に関する実践的な情報を発信するビジネスブログ。毎日新鮮な記事をAIと共に作成しています。"
+  
+  # サイトURL（httpsは自動で削除されます）
+  site_url: "https://ken787-10.github.io/kevinblog"
+  
+  # チャンネル統計（オプション）
+  stats: "@0to100vlog"
+
+# おすすめ動画/投稿の設定
+featured_post:
+  # おすすめする投稿のURLパス（例: /2025/08/30/ai-startup-success-guide/）
+  # 空の場合は最新の投稿が表示されます
+  url: ""
+  
+  # YouTube動画URL（YouTubeの動画を表示する場合）
+  youtube_url: "https://youtu.be/2SeFAMXdp4Q?si=WP6asVr931PmhsrX"
+  
+  # カスタムタイトル（空の場合は元の投稿タイトルを使用）
+  title: ""
+  
+  # カスタム説明文（空の場合は元の投稿の抜粋を使用）
+  description: ""
+  
+  # カスタムサムネイル画像URL（空の場合は元の投稿画像を使用）
+  thumbnail: ""
+  
+  # 動画の長さ（例: "10:28"）
+  duration: ""
+
+# レイアウト設定
+layout:
+  # おすすめ動画の幅（px）
+  featured_video_width: 424
+  
+  # おすすめ動画セクションを表示するかどうか
+  show_featured: true

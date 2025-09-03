@@ -45,7 +45,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "page_2col"
+      layout: "post-youtube"
       author: "Kevin"
   - scope:
       path: ""

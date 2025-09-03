@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "ja" }}">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    {% comment %} SEO構造化データ {% endcomment %}
+    {% include seo/structured_data.html %}
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+      body { 
+        font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #0f0f0f;
+        color: #f1f1f1;
+      }
+      /* リンクの下線を完全に削除 */
+      a, a:hover, a:focus, a:active {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        outline: none !important;
+      }
+      /* タイトル内のリンク */
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+      /* スクロールバーのスタイル */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #272727;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #717171;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #909090;
+      }
+    </style>
+    {%- feed_meta -%}
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+      {%- include google-analytics.html -%}
+    {%- endif -%}
+  </head>
+
+  <body class="bg-[#0f0f0f] text-gray-100">
+
+    <header class="bg-[#0f0f0f] border-b border-gray-800 sticky top-0 z-50">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-14">
+          <!-- ロゴ -->
+          <div class="flex items-center gap-6">
+            <a href="{{ "/" | relative_url }}" class="flex items-center gap-2 text-white hover:opacity-80 transition">
+              <svg viewBox="0 0 90 20" class="h-5">
+                <g fill="currentColor">
+                  <path d="M27.9 6.5c-.2-1.2-.7-2.1-1.5-2.7-.8-.6-1.8-.9-3.1-.9-1 0-1.8.2-2.5.6-.6.4-1.1.9-1.4 1.6-.3.7-.5 1.5-.5 2.4 0 .9.2 1.7.5 2.4.3.7.8 1.2 1.4 1.6.6.4 1.5.6 2.5.6 1.2 0 2.2-.3 3-.8.8-.6 1.3-1.4 1.5-2.6h-3.6V6.9h5.7v1.9c-.2 1-.6 1.9-1.2 2.7-.6.8-1.4 1.4-2.3 1.9-1 .4-2.1.7-3.3.7-1.5 0-2.8-.3-3.9-.9-1.1-.6-2-1.5-2.6-2.6-.6-1.1-.9-2.4-.9-3.9s.3-2.8.9-3.9c.6-1.1 1.5-2 2.6-2.6C20.3.3 21.6 0 23.1 0c1.8 0 3.3.4 4.5 1.3 1.2.9 1.9 2.1 2.2 3.7h-1.9zM35.9 13c-.9 0-1.7-.2-2.4-.5-.7-.4-1.2-.9-1.6-1.6-.4-.7-.5-1.5-.5-2.5s.2-1.8.5-2.5c.4-.7.9-1.2 1.6-1.6.7-.4 1.5-.5 2.4-.5.9 0 1.7.2 2.4.5.7.4 1.2.9 1.6 1.6.4.7.5 1.5.5 2.5s-.2 1.8-.5 2.5c-.4.7-.9 1.2-1.6 1.6-.7.3-1.5.5-2.4.5zm0-1.5c.6 0 1-.1 1.4-.4.4-.3.7-.6.9-1.1.2-.5.3-1 .3-1.6 0-.6-.1-1.2-.3-1.6-.2-.5-.5-.8-.9-1.1-.4-.3-.8-.4-1.4-.4-.6 0-1 .1-1.4.4-.4.3-.7.6-.9 1.1-.2.5-.3 1-.3 1.6 0 .6.1 1.2.3 1.6.2.5.5.8.9 1.1.4.3.9.4 1.4.4zM48.2 13c-.9 0-1.7-.2-2.4-.5-.7-.4-1.2-.9-1.6-1.6-.4-.7-.5-1.5-.5-2.5s.2-1.8.5-2.5c.4-.7.9-1.2 1.6-1.6.7-.4 1.5-.5 2.4-.5.9 0 1.7.2 2.4.5.7.4 1.2.9 1.6 1.6.4.7.5 1.5.5 2.5s-.2 1.8-.5 2.5c-.4.7-.9 1.2-1.6 1.6-.7.3-1.5.5-2.4.5zm0-1.5c.6 0 1-.1 1.4-.4.4-.3.7-.6.9-1.1.2-.5.3-1 .3-1.6 0-.6-.1-1.2-.3-1.6-.2-.5-.5-.8-.9-1.1-.4-.3-.8-.4-1.4-.4-.6 0-1 .1-1.4.4-.4.3-.7.6-.9 1.1-.2.5-.3 1-.3 1.6 0 .6.1 1.2.3 1.6.2.5.5.8.9 1.1.4.3.9.4 1.4.4z"/>
+                </g>
+              </svg>
+              <span class="font-semibold">{{ site.title | escape }}</span>
+            </a>
+          </div>
+          
+          <!-- 右側のアクション -->
+          <div class="flex items-center gap-4">
+            <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" 
+               class="bg-red-600 text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-red-700 transition">
+              登録
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      {{ content }}
+    </main>
+
+    <footer class="bg-[#0f0f0f] text-gray-400 py-8 mt-16 border-t border-gray-800">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center text-sm">
+          <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | escape }}. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,158 @@
+---
+layout: default-dark
+---
+
+<style>
+  /* YouTube風のカスタムスタイル */
+  .video-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+  
+  .video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-duration {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .channel-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  /* ダークモードのテキストスタイル */
+  .video-title {
+    color: #f1f1f1;
+    font-weight: 500;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .video-meta {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* ホバーエフェクト */
+  .video-card:hover .video-title {
+    color: white;
+  }
+</style>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  
+  <!-- チャンネルヘッダー -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center text-white text-2xl font-bold">
+        K
+      </div>
+      <div>
+        <h1 class="text-2xl font-bold text-white">{{ site.title | default: "Kevin's Business Blog" }}</h1>
+        <p class="text-gray-400">{{ site.youtube_handle | default: "@0to100vlog" }} • チャンネル登録者 1万人 • 本の配信</p>
+        <div class="mt-2">
+          <a href="{{ site.youtube_channel_url | default: 'https://www.youtube.com/@0to100vlog' | append: '?sub_confirmation=1' }}" 
+             class="inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition">
+            チャンネル登録
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- タブ -->
+    <div class="border-b border-gray-800 mt-6">
+      <nav class="flex gap-8">
+        <a href="#" class="text-white font-medium pb-4 border-b-2 border-white">動画</a>
+        <a href="#" class="text-gray-400 font-medium pb-4 hover:text-white transition">再生リスト</a>
+        <a href="#" class="text-gray-400 font-medium pb-4 hover:text-white transition">詳細</a>
+      </nav>
+    </div>
+  </div>
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <!-- 動画グリッド -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+      {%- for post in site.posts -%}
+      
+      <article class="video-card group cursor-pointer">
+        <a href="{{ post.url | relative_url }}" class="block">
+          <!-- サムネイル -->
+          <div class="video-thumbnail rounded-xl overflow-hidden mb-3">
+            {%- if post.image -%}
+            <img src="{{ post.image | relative_url }}" 
+                 alt="{{ post.image_alt | default: post.title }}" 
+                 loading="lazy" />
+            {%- else -%}
+            <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+              <span class="text-gray-600 text-4xl">{{ post.title | slice: 0 }}</span>
+            </div>
+            {%- endif -%}
+            <!-- 動画の長さ -->
+            <span class="video-duration">{{ post.duration | default: "10:28" }}</span>
+          </div>
+          
+          <!-- 動画情報 -->
+          <div class="flex gap-3">
+            <!-- チャンネルアバター -->
+            <div class="channel-avatar">
+              {{ site.title | slice: 0 | default: "K" }}
+            </div>
+            
+            <!-- タイトルとメタ情報 -->
+            <div class="flex-1 min-w-0">
+              <h3 class="video-title text-sm mb-1">
+                {{ post.title | escape }}
+              </h3>
+              <div class="video-meta">
+                <div>{{ site.title | escape }}</div>
+                <div>
+                  <span>{{ post.views | default: "1.2万" }}回視聴</span>
+                  <span class="mx-1">•</span>
+                  <span>
+                    {%- assign date_format = "%Y.%m.%d" -%}
+                    {{ post.date | date: date_format }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      {%- endfor -%}
+    </div>
+
+  {%- endif -%}
+
+</div>

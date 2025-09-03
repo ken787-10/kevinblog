@@ -1,0 +1,287 @@
+---
+layout: default-dark
+---
+
+<style>
+  /* YouTubeの正確なスタイル */
+  body {
+    font-family: "Roboto","Arial",sans-serif;
+    background-color: #0f0f0f;
+  }
+  
+  /* チャンネルバナー */
+  .channel-banner {
+    width: 100%;
+    height: 0;
+    padding-bottom: 16.66%; /* バナー比率 */
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=2400&h=400&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* チャンネルヘッダー */
+  .channel-header {
+    background: #0f0f0f;
+    padding: 16px 0;
+  }
+  
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .channel-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+  }
+  
+  .channel-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #f1f1f1;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .channel-handle {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  .subscribe-button {
+    background: #f1f1f1;
+    color: #0f0f0f;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .subscribe-button:hover {
+    background: #e5e5e5;
+  }
+  
+  /* タブナビゲーション */
+  .channel-tabs {
+    border-bottom: 1px solid #303030;
+    margin-top: 12px;
+  }
+  
+  .tab-button {
+    color: #aaa;
+    padding: 0 24px 14px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .tab-button.active {
+    color: #f1f1f1;
+  }
+  
+  .tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 24px;
+    height: 2px;
+    background: #f1f1f1;
+  }
+  
+  /* ビデオグリッド */
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px 8px;
+    margin-top: 24px;
+  }
+  
+  .video-card {
+    cursor: pointer;
+  }
+  
+  .video-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  
+  .video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-duration {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 3px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  .video-details {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .video-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6366f1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .video-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .video-title {
+    color: #f1f1f1;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .video-metadata {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .video-card:hover .video-title {
+    color: #fff;
+  }
+</style>
+
+<div style="background: #0f0f0f; min-height: 100vh;">
+  <!-- チャンネルバナー -->
+  <div class="channel-banner"></div>
+  
+  <!-- チャンネル情報 -->
+  <div class="channel-header">
+    <div class="max-w-screen-xl mx-auto px-8">
+      <div class="channel-info">
+        <div class="channel-avatar"></div>
+        <div>
+          <h1 class="channel-title">Kevinの起業家VLOG</h1>
+          <div class="channel-handle">@0to100vlog • チャンネル登録者 1万人 • 本の動画</div>
+        </div>
+        <button class="subscribe-button">チャンネル登録</button>
+      </div>
+      
+      <!-- タブ -->
+      <div class="channel-tabs">
+        <button class="tab-button active">動画</button>
+        <button class="tab-button">再生リスト</button>
+        <button class="tab-button">詳細</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- コンテンツエリア -->
+  <div class="max-w-screen-xl mx-auto px-8 pb-8">
+    {{ content }}
+    
+    {%- if site.posts.size > 0 -%}
+      <!-- 最新動画セクション -->
+      <div style="margin-top: 24px;">
+        <h2 style="color: #f1f1f1; font-size: 16px; font-weight: 400; margin-bottom: 16px;">最新の動画</h2>
+        
+        <div class="videos-grid">
+          {%- for post in site.posts limit: 12 -%}
+          <div class="video-card">
+            <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
+              <!-- サムネイル -->
+              <div class="video-thumbnail">
+                {%- if post.image -%}
+                <img src="{{ post.image | relative_url }}" 
+                     alt="{{ post.title }}" 
+                     loading="lazy" />
+                {%- else -%}
+                <div style="width: 100%; height: 100%; background: #202020; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: #606060; font-size: 48px;">{{ post.title | slice: 0 }}</span>
+                </div>
+                {%- endif -%}
+                <span class="video-duration">{{ post.duration | default: "12:34" }}</span>
+              </div>
+              
+              <!-- 動画情報 -->
+              <div class="video-details">
+                <div class="video-avatar">K</div>
+                <div class="video-info">
+                  <h3 class="video-title">{{ post.title | escape }}</h3>
+                  <div class="video-metadata">
+                    <div>Kevinの起業家VLOG</div>
+                    <div>
+                      {%- assign views = post.views | default: "1.2万" -%}
+                      <span>{{ views }}回視聴</span>
+                      <span style="margin: 0 4px;">•</span>
+                      {%- assign date_diff = 'now' | date: '%s' | minus: post.date | date: '%s' | divided_by: 86400 -%}
+                      {%- if date_diff == 0 -%}
+                        <span>今日</span>
+                      {%- elsif date_diff == 1 -%}
+                        <span>1日前</span>
+                      {%- elsif date_diff < 7 -%}
+                        <span>{{ date_diff }}日前</span>
+                      {%- elsif date_diff < 30 -%}
+                        {%- assign weeks = date_diff | divided_by: 7 -%}
+                        <span>{{ weeks }}週間前</span>
+                      {%- elsif date_diff < 365 -%}
+                        {%- assign months = date_diff | divided_by: 30 -%}
+                        <span>{{ months }}か月前</span>
+                      {%- else -%}
+                        {%- assign years = date_diff | divided_by: 365 -%}
+                        <span>{{ years }}年前</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

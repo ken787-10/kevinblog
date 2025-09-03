@@ -1,0 +1,301 @@
+---
+layout: default-no-header
+---
+
+<style>
+  /* ヒーローセクションのスタイル（ホームページと共通） */
+  body {
+    font-family: "Roboto", "Noto Sans JP", Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .youtube-container {
+    max-width: 1284px;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+  
+  .channel-banner {
+    width: 100%;
+    height: 240px;
+    background-image: url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=1284&h=240&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .channel-section {
+    padding: 0 24px;
+    margin-bottom: 24px;
+  }
+  
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .channel-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+  
+  .channel-details {
+    flex: 1;
+    padding-bottom: 16px;
+  }
+  
+  .channel-name {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #030303;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .channel-stats {
+    color: #606060;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .channel-links {
+    margin-top: 8px;
+  }
+  
+  .channel-actions {
+    margin-left: auto;
+    padding-bottom: 16px;
+  }
+  
+  .subscribe-btn {
+    background: #cc0000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .subscribe-btn:hover {
+    background: #b30000;
+  }
+  
+  .channel-tabs {
+    display: flex;
+    gap: 32px;
+    padding: 0 24px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 24px;
+  }
+  
+  .tab-item {
+    color: #606060;
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .tab-item:hover {
+    color: #030303;
+  }
+  
+  .tab-item.active {
+    color: #030303;
+    border-bottom-color: #030303;
+  }
+  
+  /* 記事コンテンツのスタイル */
+  .article-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+  }
+  
+  .article-header {
+    margin-bottom: 32px;
+  }
+  
+  .article-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #030303;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+  }
+  
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #606060;
+    font-size: 14px;
+  }
+  
+  .category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .article-content {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #030303;
+  }
+  
+  .article-content p {
+    margin-bottom: 24px;
+  }
+  
+  .article-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 48px 0 24px;
+    color: #030303;
+  }
+  
+  .article-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 36px 0 18px;
+    color: #030303;
+  }
+  
+  .article-content ul, .article-content ol {
+    margin-bottom: 24px;
+    padding-left: 30px;
+  }
+  
+  .article-content li {
+    margin-bottom: 12px;
+    line-height: 1.8;
+  }
+  
+  .article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 24px 0;
+  }
+  
+  .article-content a {
+    color: #065fd4;
+    text-decoration: none;
+  }
+  
+  .article-content a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="youtube-container">
+  <!-- バナー -->
+  <div style="padding: 24px 24px 0;">
+    <div class="channel-banner"></div>
+  </div>
+  
+  <!-- チャンネル情報 -->
+  <div class="channel-section">
+    <div class="channel-info">
+      <div class="channel-avatar"></div>
+      <div class="channel-details">
+        <h1 class="channel-name">{{ site.title | escape }}</h1>
+        <div class="channel-stats">
+          {%- if site.data.youtube_settings.channel.subtitle -%}
+            {{ site.data.youtube_settings.channel.subtitle | strip_html | strip_newlines }}
+          {%- else -%}
+            {{ site.description | strip_html | strip_newlines | truncate: 100 }}
+          {%- endif -%}
+        </div>
+        <div class="channel-links">
+          {%- if site.data.youtube_settings.channel.site_url -%}
+            <a href="{{ site.data.youtube_settings.channel.site_url }}" style="color: #065fd4; font-size: 14px;">{{ site.data.youtube_settings.channel.site_url | remove: 'https://' | remove: 'http://' }}</a>
+          {%- else -%}
+            <a href="{{ site.url }}" style="color: #065fd4; font-size: 14px;">{{ site.url | remove: 'https://' | remove: 'http://' }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="channel-actions">
+        <button class="subscribe-btn">チャンネル登録</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- タブ -->
+  <nav class="channel-tabs">
+    <a href="{{ "/" | relative_url }}" class="tab-item">ホーム</a>
+    <div class="tab-item">プロフィール</div>
+    <div class="tab-item">YouTube</div>
+  </nav>
+  
+  <!-- 記事コンテンツ -->
+  <article class="article-container">
+    <header class="article-header">
+      <h1 class="article-title">{{ page.title | escape }}</h1>
+      <div class="article-meta">
+        <!-- カテゴリ別の配色を設定 -->
+        {%- assign category = page.categories[0] | default: "general" -%}
+        {%- assign category_lower = category | downcase -%}
+        {%- case category_lower -%}
+          {%- when "ai" or "機械学習" or "ml" or "chatgpt" -%}
+            {%- assign badge_bg = "#6366f1" -%}
+            {%- assign category_label = "AI・機械学習" -%}
+          {%- when "起業" or "startup" or "ビジネス" or "business" -%}
+            {%- assign badge_bg = "#f97316" -%}
+            {%- assign category_label = "起業戦略" -%}
+          {%- when "資金調達" or "funding" or "投資" or "investment" -%}
+            {%- assign badge_bg = "#3b82f6" -%}
+            {%- assign category_label = "資金調達" -%}
+          {%- when "youtube" or "動画" or "video" -%}
+            {%- assign badge_bg = "#ef4444" -%}
+            {%- assign category_label = "YouTube" -%}
+          {%- when "マーケティング" or "marketing" or "seo" -%}
+            {%- assign badge_bg = "#10b981" -%}
+            {%- assign category_label = "マーケティング" -%}
+          {%- when "自己成長" or "成長" or "self-improvement" or "personal-growth" -%}
+            {%- assign badge_bg = "#8b5cf6" -%}
+            {%- assign category_label = "自己成長" -%}
+          {%- else -%}
+            {%- assign badge_bg = "#6b7280" -%}
+            {%- assign category_label = category | capitalize -%}
+        {%- endcase -%}
+        
+        <span class="category-badge" style="background-color: {{ badge_bg }};">{{ category_label }}</span>
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {%- assign date_format = "%Y年%m月%d日" -%}
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.author -%}
+        <span>{{ page.author }}</span>
+        {%- endif -%}
+      </div>
+    </header>
+    
+    <div class="article-content">
+      {{ content }}
+    </div>
+  </article>
+</div>

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
   <!-- White background container matching Design A -->
   <div class="bg-white rounded-xl shadow-sm border border-gray-100">
     <div class="px-6 sm:px-10 py-10">
@@ -31,11 +31,11 @@ layout: default
         }
         /* Fix paragraph styling */
         .page-2col-content p {
-          margin-top: 0; margin-bottom: 1.5rem;
+          margin-top: 0; margin-bottom: 1.75rem;
           font-weight: 400 !important; 
-          line-height: 1.8; 
+          line-height: 1.9; 
           color: #1f2937;
-          font-size: 1.0625rem;
+          font-size: 1.125rem;
           letter-spacing: 0.01em;
         }
         .page-2col-content strong {
@@ -48,9 +48,10 @@ layout: default
           list-style-type: disc;
         }
         .page-2col-content ul li {
-          margin-bottom: 0.75rem;
-          line-height: 1.75;
+          margin-bottom: 0.875rem;
+          line-height: 1.85;
           color: #1f2937;
+          font-size: 1.0625rem;
         }
         /* タスクリストのスタイル */
         .page-2col-content ul.task-list {
@@ -72,9 +73,10 @@ layout: default
           list-style-type: decimal;
         }
         .page-2col-content ol li {
-          margin-bottom: 0.75rem;
-          line-height: 1.75;
+          margin-bottom: 0.875rem;
+          line-height: 1.85;
           color: #1f2937;
+          font-size: 1.0625rem;
         }
         .page-2col-content a {
           color: #4f46e5;
@@ -132,7 +134,7 @@ layout: default
         <article class="lg:col-span-8 page-2col-content">
           {% if page.title %}
           <header class="mb-8 pb-6 border-b border-gray-200">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">{{ page.title }}</h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">{{ page.title }}</h1>
             {% if page.subtitle %}
             <p class="mt-2 text-gray-600">{{ page.subtitle }}</p>
             {% endif %}
