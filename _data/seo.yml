@@ -1,0 +1,43 @@
+# SEO設定ファイル
+# このファイルでSEO関連の設定を一元管理します
+
+# Google Analytics
+google_analytics: "G-XXXXXXXXXX"  # あなたのGoogle Analytics ID
+
+# Google Search Console
+google_site_verification: "your-verification-code"
+
+# サイト情報
+site:
+  name: "Kevin's UPGRADE Blog"
+  tagline: "起業家のための実践的AI活用ガイド"
+  keywords:
+    - "起業"
+    - "AI活用"
+    - "ChatGPT"
+    - "経営戦略"
+    - "ビジネス"
+    - "YouTube"
+    - "自己成長"
+    - "資金調達"
+    - "マーケティング"
+
+# ソーシャルメディア
+social:
+  twitter: "@upgrade-life"  # Twitterアカウント
+  youtube: "https://www.youtube.com/@0to100vlog"
+  linkedin: "https://linkedin.com/in/your-profile"
+  facebook: "https://facebook.com/your-page"
+
+# デフォルトOGP画像
+default_image: "/assets/img/posts/channels_profile.jpg"
+
+# 構造化データ（Schema.org）
+person:
+  name: "Kevin"
+  jobTitle: "連続起業家 / AI活用コンサルタント"
+  description: "起業家として、AIを活用したビジネス戦略を実践・発信"
+  
+organization:
+  name: "Kevin's UPGRADE Blog"
+  logo: "/assets/img/logo.png"

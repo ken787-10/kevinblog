@@ -1,0 +1,8 @@
+{% assign src = include.src | relative_url %}
+<figure class="{{ include.class | default: 'my-6 text-center' }}">
+  <img src="{{ src }}" alt="{{ include.alt | default: '' }}" 
+       loading="lazy" width="{{ include.w | default: '' }}" height="{{ include.h | default: '' }}">
+  {% if include.caption %}
+    <figcaption class="text-sm opacity-70 mt-2">{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

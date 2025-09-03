@@ -23,7 +23,7 @@ email: kevin@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   起業家Kevinが起業、AI、経営戦略、進化に関する実践的な情報を発信するYouTube連動型Blog。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://kevinblog.vercel.app" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevin
 github_username:  kevin
 youtube_channel_url: "https://www.youtube.com/@0to100vlog"
@@ -68,6 +68,30 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+# SEO設定
+author: Kevin
+lang: ja
+twitter:
+  username: upgrade-life
+  card: summary_large_image
+facebook:
+  publisher: https://facebook.com/your-page
+social:
+  name: Kevin
+  links:
+    - https://twitter.com/upgrade-life
+    - https://www.youtube.com/@0to100vlog
+    - https://linkedin.com/in/your-profile
+    - https://github.com/ken787-10
+
+# Google Analytics（本番環境で使用）
+google_analytics: # "G-XXXXXXXXXX"
+
+# サイト検証
+webmaster_verifications:
+  google: # verification_code
+  bing: # verification_code
 
 # Exclude from processing.
 # The following items will not be processed, by default.
