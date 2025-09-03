@@ -67,9 +67,14 @@
   }
   
   .channel-stats {
-    color: #606060;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    font-family: -apple-system, "system-ui", "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 14px;
-    line-height: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    text-align: left;
     margin-top: 4px;
   }
   
@@ -166,15 +171,19 @@
       flex-direction: column;
       gap: 0;
       align-items: flex-start;
-      margin-top: -24px;
+      margin-top: 0;
       margin-bottom: 20px;
+      position: relative;
     }
     
     .channel-avatar {
       width: 80px;
       height: 80px;
+      margin-top: -40px;
       margin-bottom: 16px;
       border: 3px solid #ffffff;
+      position: relative;
+      z-index: 1;
     }
     
     .channel-details {
@@ -193,9 +202,14 @@
     
     
     .channel-stats {
+      box-sizing: border-box;
+      color: rgb(31, 35, 40);
+      font-family: -apple-system, "system-ui", "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
       font-size: 14px;
-      color: #606060;
-      line-height: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      overflow-wrap: break-word;
+      text-align: left;
       margin-bottom: 8px;
     }
     
