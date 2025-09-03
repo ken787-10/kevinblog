@@ -2,13 +2,17 @@
 <div class="youtube-container">
   <!-- バナー -->
   <div class="banner-wrapper">
-    <div class="channel-banner"></div>
+    <a href="{{ "/" | relative_url }}" class="channel-banner-link">
+      <div class="channel-banner"></div>
+    </a>
   </div>
   
   <!-- チャンネル情報 -->
   <div class="channel-section">
     <div class="channel-info">
-      <div class="channel-avatar"></div>
+      <a href="{{ "/" | relative_url }}" class="channel-avatar-link">
+        <div class="channel-avatar"></div>
+      </a>
       <div class="channel-details">
         <h1 class="channel-name">
           <span class="channel-title">{{ site.title | escape }}</span>
