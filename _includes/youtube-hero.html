@@ -1,7 +1,7 @@
 <!-- YouTube風ヒーローセクション共通モジュール -->
 <div class="youtube-container">
   <!-- バナー -->
-  <div style="padding: 24px 24px 0;">
+  <div class="banner-wrapper">
     <div class="channel-banner"></div>
   </div>
   
@@ -10,7 +10,9 @@
     <div class="channel-info">
       <div class="channel-avatar"></div>
       <div class="channel-details">
-        <h1 class="channel-name">{{ site.title | escape }}</h1>
+        <h1 class="channel-name">
+          <span class="channel-title">{{ site.title | escape }}</span>
+        </h1>
         <div class="channel-stats">
           {%- if site.data.youtube_settings.channel.subtitle -%}
             {{ site.data.youtube_settings.channel.subtitle | strip_html | strip_newlines }}
