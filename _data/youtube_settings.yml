@@ -18,7 +18,7 @@ channel:
 # おすすめ動画/投稿の設定
 featured_post:
   # 表示/非表示の設定（true: 表示、false: 非表示）
-  enabled: true
+  enabled: false
   
   # おすすめする投稿のURLパス（例: /2025/08/30/ai-startup-success-guide/）
   # 空の場合は最新の投稿が表示されます
