@@ -27,17 +27,16 @@
         </div>
       </div>
       <div class="channel-actions">
-        <a href="#" class="view-stats-btn">View channel stats</a>
         {%- if site.data.youtube_settings.channel.youtube_channel_url -%}
         <a href="{{ site.data.youtube_settings.channel.youtube_channel_url }}?sub_confirmation=1" 
            target="_blank" 
            rel="noopener noreferrer" 
            class="subscribe-btn"
            style="display: inline-block; text-decoration: none; color: #ffffff;">
-          チャンネルをカスタマイズ
+          チャンネル登録
         </a>
         {%- else -%}
-        <button class="subscribe-btn">チャンネルをカスタマイズ</button>
+        <button class="subscribe-btn">チャンネル登録</button>
         {%- endif -%}
       </div>
     </div>
