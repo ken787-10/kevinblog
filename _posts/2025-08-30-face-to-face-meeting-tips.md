@@ -1,13 +1,12 @@
 ---
-title: "「対面ミーティングの力、実体験から学んだ5つのヒント」"
-categories: ["働き方", "テクノロジー"]
+title: "対面ミーティングの力、実体験から学んだ5つのヒント"
+date: 2025-08-30 12:00:00 +0900
+categories: 起業
 tags: ["オンライン会議", "対面コミュニケーション", "リモートワーク", "生産性", "コラボレーション", "テクノロジーの進化", "働き方改革"]
 author: "Kevin"
-date: "2025-08-30"
 description: "対面ミーティングの力を再確認し、信頼関係やアイデアのひらめきを育む5つのヒントを実体験から学びましょう。オンライン会議に疲れたあなたへ、対面の価値を見直すための具体的なアドバイスをお届けします！"
-image: "/assets/img/posts/対面ミーティングの力実体験から学んだ5つのヒント-thumb.jpg"
-image_alt: "None"
-image_credit: Photo by <a href="https://unsplash.com/@lyndab?utm_source=unsplash&utm_medium=referral">Lynda B</a> on <a href="https://unsplash.com?utm_source=unsplash&utm_medium=referral">Unsplash</a>
+image: https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2000&auto=format&fit=crop
+excerpt: "デジタル時代においても、対面ミーティングの価値は決して失われていません。東京での起業家仲間との実体験から学んだ、効果的なミーティングのヒントをお伝えします。"
 ---
 
 最近、オンライン会議ばかりでモチベーションが下がること、ありませんか？確かに、対面ミーティングはコストがかかりますが、その分得られるものも大きいんです。実際に顔を合わせることで生まれる信頼関係やアイデアのひらめきは、オンラインではなかなか味わえません。今回は、私の経験をもとに、対面の力を活かすためのヒントを5つお届けします！
