@@ -7,7 +7,7 @@ channel:
   subtitle: "起業家Kevinが起業、AI、経営戦略、進化に関する実践的な情報を発信するYouTube連動型Blog"
   
   # サイトURL（httpsは自動で削除されます）
-  site_url: "https://ken787-10.github.io/kevinblog"
+  site_url: "https://kevin787.com"
   
   # チャンネル統計（オプション）
   stats: "@0to100vlog"
@@ -45,4 +45,5 @@ layout:
   featured_video_width: 424
   
   # おすすめ動画セクションを表示するかどうか
-  show_featured: true
+  show_featured: false
+  
