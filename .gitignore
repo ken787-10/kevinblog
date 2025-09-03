@@ -21,3 +21,15 @@ __pycache__/
 # IDE
 .vscode/
 .idea/
+
+# Bundle
+.bundle
+Gemfile.lock
+
+# Node
+node_modules
+
+# Editor
+*.swp
+*.swo
+*~

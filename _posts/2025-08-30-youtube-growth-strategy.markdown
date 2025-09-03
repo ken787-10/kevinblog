@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "YouTubeチャンネル成長戦略：登録者10万人への道"
 date:   2025-08-30 09:00:00 +0900
 categories: YouTube

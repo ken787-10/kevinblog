@@ -1,5 +1,4 @@
 ---
-layout: post-youtube
 title:  "AI活用のスタートアップ成功法則：実践ガイド"
 date:   2025-08-30 10:00:00 +0900
 categories: AI

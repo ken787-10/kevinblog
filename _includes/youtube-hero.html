@@ -1,0 +1,51 @@
+<!-- YouTube風ヒーローセクション共通モジュール -->
+<div class="youtube-container">
+  <!-- バナー -->
+  <div style="padding: 24px 24px 0;">
+    <div class="channel-banner"></div>
+  </div>
+  
+  <!-- チャンネル情報 -->
+  <div class="channel-section">
+    <div class="channel-info">
+      <div class="channel-avatar"></div>
+      <div class="channel-details">
+        <h1 class="channel-name">{{ site.title | escape }}</h1>
+        <div class="channel-stats">
+          {%- if site.data.youtube_settings.channel.subtitle -%}
+            {{ site.data.youtube_settings.channel.subtitle | strip_html | strip_newlines }}
+          {%- else -%}
+            {{ site.description | strip_html | strip_newlines | truncate: 100 }}
+          {%- endif -%}
+        </div>
+        <div class="channel-links">
+          {%- if site.data.youtube_settings.channel.site_url -%}
+            <a href="{{ site.data.youtube_settings.channel.site_url }}" style="color: #065fd4; font-size: 14px;">{{ site.data.youtube_settings.channel.site_url | remove: 'https://' | remove: 'http://' }}</a>
+          {%- else -%}
+            <a href="{{ site.url }}" style="color: #065fd4; font-size: 14px;">{{ site.url | remove: 'https://' | remove: 'http://' }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="channel-actions">
+        {%- if site.data.youtube_settings.channel.youtube_channel_url -%}
+        <a href="{{ site.data.youtube_settings.channel.youtube_channel_url }}?sub_confirmation=1" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="subscribe-btn"
+           style="display: inline-block; text-decoration: none; color: #ffffff;">
+          チャンネル登録
+        </a>
+        {%- else -%}
+        <button class="subscribe-btn">チャンネル登録</button>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  
+  <!-- タブ -->
+  <nav class="channel-tabs">
+    <a href="{{ "/" | relative_url }}" class="tab-item {% if page.url == '/' %}active{% endif %}">ホーム</a>
+    <a href="{{ "/profile/" | relative_url }}" class="tab-item {% if page.url == '/profile/' %}active{% endif %}">プロフィール</a>
+    <div class="tab-item">YouTube</div>
+  </nav>
+</div>

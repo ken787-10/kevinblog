@@ -1,30 +1,51 @@
-# Kevin's AI-Powered Blog
+# Kevin起業家VLOG
 
-JekyllとAI（OpenAI API）を使った自動記事生成ブログシステムです。
+AI・起業・経営戦略についての情報を発信するブログです。YouTube風のデザインを採用し、テック系起業家向けのコンテンツを提供しています。
 
 ## 機能
 
-- 毎日朝5時（JST）に3記事を自動生成
-- 記事は `_drafts/` フォルダに保存され、レビュー後に公開
-- GitHub Actionsによる完全自動化
-- Pull Request経由でのレビューフロー
+- YouTube風のデザイン
+- カテゴリー別の色分け表示
+- おすすめ動画セクション
+- プロフィールページ
+- レスポンシブデザイン
+- AI記事自動生成（GitHub Actions）
 
-## セットアップ手順
+## Vercelへのデプロイ
 
-### 1. リポジトリの準備
+### 1. GitHubへプッシュ
 
 ```bash
-# リポジトリをクローン
-git clone <your-repo-url>
-cd <your-repo-name>
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
 
-# Jekyllをインストール
-gem install bundler jekyll
+### 2. Vercelでインポート
+
+1. [Vercel](https://vercel.com)にログイン
+2. 「Import Project」をクリック
+3. GitHubリポジトリを選択
+4. 自動的にビルド設定が検出されます
+5. 「Deploy」をクリック
+
+## ローカル開発
+
+### 必要な環境
+- Ruby 2.6以上
+- Bundler
+
+### セットアップ
+
+```bash
+# 依存関係をインストール
 bundle install
 
-# 必要なディレクトリを作成
-mkdir -p _drafts _posts assets/img
+# 開発サーバーを起動
+bundle exec jekyll serve --livereload
 ```
+
+ブラウザで `http://localhost:4000` にアクセス
 
 ### 2. GitHub Secretsの設定
 
@@ -79,50 +100,63 @@ open http://localhost:4000
 
 ## カスタマイズ
 
-### トピックの追加
+### YouTube設定
+`_data/youtube_settings.yml` で以下を設定できます：
+- チャンネル情報（サブタイトル、URL）
+- おすすめ動画のYouTube URL
+- ソーシャルリンク
 
-`scripts/generate_post.py` の `TOPICS` リストに新しいテーマを追加:
+### 新規記事の追加
+`_posts/` ディレクトリに `YYYY-MM-DD-title.md` 形式でファイルを作成：
 
-```python
-{
-    "theme": "新しいテーマ",
-    "categories": ["カテゴリ1", "カテゴリ2"],
-    "tags": ["タグ1", "タグ2", "タグ3"]
-}
+```markdown
+---
+title: "記事タイトル"
+date: 2025-09-03 10:00:00 +0900
+categories: AI
+image: https://example.com/image.jpg
+excerpt: "記事の概要"
+---
+
+記事本文をここに書きます。
 ```
 
-### 生成記事数の変更
+### カテゴリー
+以下のカテゴリーが設定されています：
+- AI・機械学習（紫）
+- 起業戦略（オレンジ）
+- 資金調達（青）
+- YouTube（赤）
+- マーケティング（緑）
+- 自己成長（紫）
 
-`scripts/generate_post.py` の以下の部分を修正:
+## プロジェクト構造
 
-```python
-for i in range(3):  # この数字を変更
+```
+├── _layouts/              # レイアウトテンプレート
+│   ├── home-youtube-unified.html  # ホームページ
+│   ├── post-youtube.html         # 記事ページ
+│   └── profile.html              # プロフィールページ
+├── _includes/            # 共通コンポーネント
+│   ├── youtube-hero.html         # ヒーローセクション
+│   └── youtube-styles.html       # 共通スタイル
+├── _posts/               # ブログ記事
+├── _data/               # 設定データ
+│   └── youtube_settings.yml      # YouTube設定
+├── assets/              # CSS、画像など
+├── profile.md           # プロフィールコンテンツ
+├── vercel.json          # Vercel設定
+└── package.json         # npm設定
 ```
 
-### 実行時間の変更
+## AI記事自動生成について
 
-`.github/workflows/generate.yml` のcron設定を修正:
+### GitHub Secretsの設定
+GitHubリポジトリの Settings > Secrets and variables > Actions で以下を設定:
+- `OPENAI_API_KEY`: OpenAI APIキー
 
-```yaml
-- cron: '0 20 * * *'  # UTC時間で設定（JSTから-9時間）
-```
-
-## トラブルシューティング
-
-### OpenAI APIエラー
-
-- APIキーが正しく設定されているか確認
-- APIの利用制限に達していないか確認
-
-### GitHub Actionsが動かない
-
-- GitHub Secretsが正しく設定されているか確認
-- Actionsが有効になっているか確認（Settings > Actions）
-
-## 今後の拡張予定
-
-- [ ] Unsplash APIでアイキャッチ画像を自動取得
-- [ ] YouTube台本の同時生成
-- [ ] SNS（X、LinkedIn）への自動投稿
-- [ ] 記事の品質評価機能
-- [ ] カテゴリ別の生成頻度調整
+### ワークフロー
+1. 毎朝5時にGitHub Actionsが起動し、3記事を生成
+2. Pull Requestが自動作成されるので内容を確認
+3. 必要に応じて記事を修正
+4. 公開したい記事を `_drafts/` から `_posts/` へ移動してマージ

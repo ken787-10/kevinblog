@@ -1,0 +1,190 @@
+---
+layout: default-no-header
+---
+
+{%- include youtube-styles.html -%}
+
+<style>
+  .profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+  }
+  
+  .profile-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .profile-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #030303;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+  }
+  
+  .profile-subtitle {
+    font-size: 18px;
+    color: #606060;
+    margin-bottom: 24px;
+  }
+  
+  .profile-content {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Arial, Meiryo, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #333333;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  
+  .profile-section {
+    margin-bottom: 48px;
+  }
+  
+  .profile-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    color: #030303;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .profile-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 24px 0 16px;
+    color: #030303;
+  }
+  
+  .profile-section p {
+    margin-bottom: 20px;
+  }
+  
+  .profile-section ul, .profile-section ol {
+    margin-bottom: 20px;
+    padding-left: 30px;
+  }
+  
+  .profile-section li {
+    margin-bottom: 12px;
+    line-height: 1.8;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 32px 0;
+  }
+  
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    color: #030303;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .social-link:hover {
+    background: #f9f9f9;
+    border-color: #d0d0d0;
+  }
+  
+  .timeline-item {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+  
+  .timeline-date {
+    flex-shrink: 0;
+    width: 120px;
+    font-weight: 600;
+    color: #606060;
+  }
+  
+  .timeline-content h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #030303;
+  }
+  
+  .timeline-content p {
+    margin: 0;
+    color: #606060;
+  }
+  
+  @media (max-width: 768px) {
+    .profile-title {
+      font-size: 28px;
+    }
+    
+    .social-links {
+      flex-wrap: wrap;
+    }
+    
+    .timeline-item {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .timeline-date {
+      width: auto;
+    }
+  }
+</style>
+
+{%- include youtube-hero.html -%}
+
+<div class="youtube-container">
+  <div class="profile-container">
+    <header class="profile-header">
+            <h1 class="profile-title">Kevin 起業家</h1>
+      <p class="profile-subtitle">連続起業家 / AI活用コンサルタント / YouTuber</p>
+      
+      <div class="social-links">
+        <a href="https://www.youtube.com/@0to100vlog" target="_blank" rel="noopener noreferrer" class="social-link">
+          <span>YouTube</span>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">
+          <span>Twitter</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </header>
+    
+    <div class="profile-content">
+      {{ content }}
+    </div>
+  </div>
+</div>

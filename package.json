@@ -1,0 +1,14 @@
+{
+  "name": "kevin-blog",
+  "version": "1.0.0",
+  "description": "Kevin起業家VLOG - AI・起業・経営戦略ブログ",
+  "scripts": {
+    "build": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve",
+    "dev": "bundle exec jekyll serve --livereload"
+  },
+  "engines": {
+    "ruby": ">=2.6.0"
+  },
+  "private": true
+}

@@ -11,6 +11,9 @@ channel:
   
   # チャンネル統計（オプション）
   stats: "@0to100vlog"
+  
+  # YouTubeチャンネルURL（チャンネル登録ボタン用）
+  youtube_channel_url: "https://www.youtube.com/@0to100vlog"
 
 # おすすめ動画/投稿の設定
 featured_post:
